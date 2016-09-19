@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>0</persistent>
+  <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -141,7 +141,8 @@ if(count[# gx, gy] == 0){
     scr_inventory_add_item(gx,gy,add_item);
 }else{
     //count[# gx, gy]++;//error if out of range for mouse position.
-    scr_inventory_add_item(gx,gy,add_item);
+    //scr_inventory_add_item(gx,gy,add_item);//
+    //scr_inventory_pickup_item(add_item);
 }
 </string>
           </argument>
@@ -170,10 +171,10 @@ for(var yy = 0; yy &lt; height; yy++){
     for(var xx = 0; xx &lt; width; xx++){
         var tx = x+(xx*box_size);
         var ty = y+(yy*box_size);
-        draw_sprite(spr_item, box[# xx,yy], tx+8, ty+8);
+        draw_sprite(spr_item, box[# xx,yy], tx, ty);
         if(count[# xx, yy] &gt; 0){
-            draw_circle_colour(tx+8, ty-2+8, 6, c_white, c_white, false);
-            draw_text(tx-1+8, ty-8+8,count[# xx, yy]);
+            draw_circle_colour(tx, ty-2, 6, c_white, c_white, false);
+            draw_text(tx-1, ty-8,count[# xx, yy]);
         }
     }
 }

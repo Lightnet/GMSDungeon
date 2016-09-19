@@ -67,7 +67,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_text( 8, draw_y - string_height(display) ,display);
+            <string>draw_text(8, draw_y - string_height(display), display);
 
 </string>
           </argument>

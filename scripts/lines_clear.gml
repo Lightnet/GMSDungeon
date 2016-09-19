@@ -11,6 +11,6 @@ if(!callback_script("lines_clear",0))
 
 //===== Clear display
 
-obj_console.display = ">> gmCallback Example#>> By JacksonYarr#>>";
+obj_console.display = ">> gmCallback >>";
 //show_debug_message("test clear lines?");
 return true;

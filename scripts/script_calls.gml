@@ -24,4 +24,4 @@ draw_set_font(fnt_text);
 draw_set_color(c_white);
 //draw_y = room_height-8;
 draw_y = display_get_gui_height()-8;
-display = ">> gmCallback Example#>> By JacksonYarr#>>";
+display = ">> gmCallback >>";

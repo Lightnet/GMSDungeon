@@ -83,7 +83,7 @@
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
-    <scripts name="game">
+    <scripts name="game_scripts">
       <script>scripts\script_calls.gml</script>
       <script>scripts\lines_add.gml</script>
       <script>scripts\lines_clear.gml</script>
