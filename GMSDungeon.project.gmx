@@ -77,6 +77,7 @@
       <sprite>sprites\spr_dialog_box</sprite>
     </sprites>
     <sprite>sprites\spr_item</sprite>
+    <sprite>sprites\sprite26</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_grass</background>
@@ -170,8 +171,16 @@
       <object>objects\obj_projectile</object>
     </objects>
     <object>objects\obj_inventory</object>
+    <object>objects\obj_nextroom</object>
+    <object>objects\obj_logging</object>
+    <object>objects\obj_room_init</object>
+    <object>objects\obj_room_timer</object>
+    <object>objects\obj_room_set</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_p0</room>
+    <room>rooms\rm_p1</room>
+    <room>rooms\rm_p2</room>
     <room>rooms\rm_inventory</room>
     <room>rooms\rm_test0</room>
     <room>rooms\rm_test1</room>
