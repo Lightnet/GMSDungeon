@@ -60,6 +60,7 @@
     <sprites name="tiles">
       <sprite>sprites\spr_wall</sprite>
       <sprite>sprites\spr_door</sprite>
+      <sprite>sprites\spr_rock</sprite>
     </sprites>
     <sprites name="pickups">
       <sprite>sprites\spr_health</sprite>
@@ -78,6 +79,9 @@
     </sprites>
     <sprite>sprites\spr_item</sprite>
     <sprite>sprites\sprite26</sprite>
+    <sprites name="ui">
+      <sprite>sprites\spr_indicator</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_grass</background>
@@ -126,9 +130,29 @@
       <script>scripts\scr_y_to_gy.gml</script>
       <script>scripts\scr_x_to_gx.gml</script>
     </scripts>
+    <scripts name="dungeon_scripts">
+      <script>scripts\scr_dungeon_survival_hud.gml</script>
+      <script>scripts\scr_dungeon_survival_state.gml</script>
+      <script>scripts\scr_dungeon_wave_hud.gml</script>
+      <script>scripts\scr_dungeon_wave_state.gml</script>
+      <script>scripts\scr_status_menu.gml</script>
+      <script>scripts\scr_skills_menu.gml</script>
+      <script>scripts\scr_dungeon_menu_select.gml</script>
+      <script>scripts\scr_creatures_menu.gml</script>
+      <script>scripts\scr_abilities_menu.gml</script>
+      <script>scripts\scr_research_menu.gml</script>
+      <script>scripts\scr_items_menu.gml</script>
+      <script>scripts\scr_status_menu_state.gml</script>
+      <script>scripts\scr_items_menu_state.gml</script>
+      <script>scripts\scr_creatures_menu_state.gml</script>
+      <script>scripts\scr_research_menu_state.gml</script>
+      <script>scripts\scr_abilities_menu_state.gml</script>
+      <script>scripts\scr_dungeon_menu_state.gml</script>
+    </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_text</font>
+    <font>fonts\fnt_main</font>
   </fonts>
   <objects name="objects">
     <objects name="creatures">
@@ -137,10 +161,13 @@
       <object>objects\obj_player_stats</object>
       <object>objects\obj_enemy_slime</object>
       <object>objects\obj_enemy_chinlin</object>
+      <object>objects\obj_dungeon_stats</object>
     </objects>
     <objects name="tiles">
       <object>objects\obj_wall</object>
       <object>objects\obj_door</object>
+      <object>objects\obj_rock</object>
+      <object>objects\obj_placer</object>
     </objects>
     <objects name="weapons">
       <object>objects\obj_weapon_animation</object>
@@ -154,9 +181,14 @@
     </objects>
     <objects name="inputs">
       <object>objects\obj_pause_menu</object>
+      <object>objects\obj_settings_menu</object>
+      <object>objects\obj_help_menu</object>
       <object>objects\obj_input</object>
       <object>objects\obj_view</object>
       <object>objects\obj_console</object>
+      <object>objects\obj_build_menu</object>
+      <object>objects\obj_start_menu</object>
+      <object>objects\obj_dungeon_menu</object>
     </objects>
     <objects name="pickups">
       <object>objects\obj_expr</object>
@@ -178,13 +210,17 @@
     <object>objects\obj_room_set</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_start_menu</room>
+    <room>rooms\rm_dungeon</room>
+    <room>rooms\rm_test0</room>
     <room>rooms\rm_p0</room>
     <room>rooms\rm_p1</room>
     <room>rooms\rm_p2</room>
     <room>rooms\rm_inventory</room>
-    <room>rooms\rm_test0</room>
     <room>rooms\rm_test1</room>
     <room>rooms\rm_pause</room>
+    <room>rooms\rm_settings</room>
+    <room>rooms\rm_help</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

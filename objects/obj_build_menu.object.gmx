@@ -25,22 +25,31 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// camera move around
-zoom = 1;
-bfollowplayer = true;
-bcameracontrol = false;
+            <string>/// initialize build
+isbuild = false;
 
-// move to player
-if(instance_exists(obj_player)){
-    x = obj_player.x;
-    y = obj_player.y;    
-}
+buildmenu[0] = "Tools";
+buildmenu[1] = "Traps";
+buildmenu[2] = "Creatures";
+buildmenu[3] = "Blocks";
+
+isboundbox = false;
+issnap = false;
+sizegrid = 32;
+selectobject = obj_rock;
+
+//tmp list
+blocklist[0] = "Dirt";
+blocklist[1] = "Rock";
+blocklist[2] = "Ruin";
+blocklist[3] = "Sand";
+blocklist[4] = "Water";
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -57,42 +66,58 @@ if(instance_exists(obj_player)){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///move 10% toward the player
-// current += (target - current) * 0.1;
-
-if(bfollowplayer){
-    if(instance_exists(obj_player)){
-        x += (obj_player.x - x) * 0.1;
-        y += (obj_player.y - y) * 0.1;
-    }
-}
-
-if(bcameracontrol){
-    ///zoom
-    if(mouse_wheel_up()){
-        zoom -=0.10;    
-    }
-    if (mouse_wheel_down()){
-        zoom +=0.10;   
+            <string>///build menu
+if(isbuild){
+    isboundbox = false;
+    var xx = display_get_gui_width()/2;
+    var yy = display_get_gui_height()/2;
+    draw_text(xx,16,"BUILD MODE");
+    
+    for (var i = 0; i &lt; array_length_1d(buildmenu); i++)
+    {
+        draw_text(xx+(i*80)-128, 64, string(buildmenu[i]));
     }
     
-    //default view port init and sacle to 1
-    view_wview[0] = 320 * zoom;
-    view_hview[0] = 240 * zoom;
-    
-    // This sets it up so that the camera is exactly in the middle of the screen at all times, regardless of zoom.
-    view_xview[0] = x - view_wview / 2;
-    view_yview[0] = y - view_hview / 2;
-    //panning view port
-    if (mouse_check_button(mb_right)){
-        // Points towards the mouse
-        direction = point_direction(x, y, mouse_x, mouse_y)
-        // Finds the distance from the camera object to the mouse, then divides it by (10 * zoom) so that the camera pan speed stays reasonable
-        speed = distance_to_point(mouse_x, mouse_y) / (10 * zoom)
+    // draw icons
+    for (i = 0; i &lt; array_length_1d(blocklist); i++){   
+        draw_sprite(spr_rock,0,4,yy+((32+4)*i)-64);
     }
-    else{ speed = 0};
-    x += lengthdir_x(speed,direction);
-    y += lengthdir_y(speed,direction);
+    var screenx = device_mouse_x_to_gui(0);
+    var screeny = device_mouse_y_to_gui(0); 
+    //check if icon are bound here min and max
+    //if(screeny &gt; (4 + yy -64) and screeny &lt; (5*(32+4) + yy -64)){//size and offsets and items
+    //if(screenx &gt; 4 and screenx &lt; (32+4) and screeny &gt; 4 and screeny &lt; (5*(32+4))){//size and offsets
+    if(screenx &gt; 4 and screenx &lt; (32+4) and screeny &gt; (4 + yy -64) and screeny &lt; (5*(32+4) + yy -64)){
+        //show_debug_message("in bound?");
+        isboundbox = true;
+        
+        //need to add icon select here to build the dungeon
+        
+    }else{
+        //show_debug_message("out bound?");
+        
+    }
+    
+    //add bool check if need to snap to grid or not
+    
+    //place preview
+    if(instance_exists(obj_placer)){
+        obj_placer.visible = true;
+        //divide and floor and time
+        obj_placer.x = (mouse_x div sizegrid)*32;
+        obj_placer.y = (mouse_y div sizegrid)*32;
+    }
+    
+    //place object
+    if(mouse_check_button_pressed(mb_left) == true and isboundbox = false ){
+        instance_create((mouse_x div sizegrid)*32,(mouse_y div sizegrid)*32,selectobject);
+    }
+}else{
+    if(instance_exists(obj_placer)){
+        with(obj_placer){
+            visible = false;
+        }
+    }
 }
 </string>
           </argument>
