@@ -82,6 +82,8 @@
     <sprites name="ui">
       <sprite>sprites\spr_indicator</sprite>
       <sprite>sprites\spr_slot</sprite>
+      <sprite>sprites\spr_down</sprite>
+      <sprite>sprites\spr_up</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">

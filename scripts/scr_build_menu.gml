@@ -23,14 +23,33 @@ if(isbuild){
         //show_debug_message("out bound?");   
     }
     
-    if(keyboard_check(ord('S'))){
-        list_index++;
-        show_debug_message(string(list_index));        
+    //if(keyboard_check(ord('S'))){list_index++;}
+    //if(keyboard_check(ord('D'))){list_index--;}   
+    if(screenx > 4 and screenx < (32+4) and screeny > (yy - ((32+4)*3)) and screeny < (yy - (32*2))){    
+        //show_debug_message("in bound?");
+        if(mouse_check_button(mb_left) == true and alarm[0] <= 0){
+            list_index--;
+            alarm[0] = room_speed/6;
+        }
+        isboundbox = true;
+    }else{
+        //show_debug_message("out bound?");
     }
-    if(keyboard_check(ord('D'))){
-        list_index--;
-        show_debug_message(string(list_index));
-    }    
+    
+    if(screenx > 4 and screenx < (32+4) and screeny > (yy + ((32+4)*(3))) and screeny < (yy + (32*(5)))){    
+        //show_debug_message("in bound?");
+        if(mouse_check_button(mb_left) == true and alarm[0] <= 0){
+            list_index++;
+            alarm[0] = room_speed/6;
+        }
+        isboundbox = true;
+    }else{
+        //show_debug_message("out bound?");
+    }
+    //draw up and down button
+    draw_sprite(spr_up,0,4,yy+((32+4)*-1)-64); 
+    draw_sprite(spr_down,0,4,yy+((32+4)*5)-64);     
+    
     // draw icons
     list_count = 0;
     if(list_index <= 0){
@@ -49,12 +68,26 @@ if(isbuild){
         if(list_count >= list_max){
             break;
         }
+        if(screenx > 4 and screenx < (32+4) and screeny > (yy - 64 + (32+4)*list_count) and screeny < (yy - 32 + (32+4)*list_count)){    
+            if(mouse_check_button(mb_left) == true and alarm[0] <= 0){
+                show_debug_message(string(slotlist[i]));
+                alarm[0] = room_speed/6;
+            }
+        }
         draw_text(48,yy+((32+4)*list_count)-64,slotlist[i]);        
         draw_sprite(spr_slot,0,4,yy+((32+4)*list_count)-64);
         list_count++;
     }
+    //var xx_p = yy - 64 + 32*0;//top
+    //var xx_p = yy - 32 + 32*0;//bottom
+    //draw_sprite(spr_up,0,64,xx_p);  
+    //if(screenx > 4 and screenx < (32+4) and screeny > (yy - 64 + (32+4)*4) and screeny < (yy - 32 + (32+4)*4)){    
+        //show_debug_message("in bound?");
+    //}else{
+        //show_debug_message("out bound?");
+    //}
     
-    //add bool check if need to snap to grid or not
+    
     
     //place preview
     if(instance_exists(obj_placer)){
@@ -68,10 +101,10 @@ if(isbuild){
     if(mouse_check_button_pressed(mb_left) == true and isboundbox = false ){
         instance_create((mouse_x div sizegrid)*32,(mouse_y div sizegrid)*32,selectobject);
     }
-}else{
-    if(instance_exists(obj_placer)){
-        with(obj_placer){
-            visible = false;
+    }else{
+        if(instance_exists(obj_placer)){
+            with(obj_placer){
+                visible = false;
+            }
         }
     }
-}
