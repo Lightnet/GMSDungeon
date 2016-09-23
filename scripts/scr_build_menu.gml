@@ -71,6 +71,25 @@ if(isbuild){
         if(screenx > 4 and screenx < (32+4) and screeny > (yy - 64 + (32+4)*list_count) and screeny < (yy - 32 + (32+4)*list_count)){    
             if(mouse_check_button(mb_left) == true and alarm[0] <= 0){
                 show_debug_message(string(slotlist[i]));
+                //check if select exist destory
+                if(selectobject == noone){
+                
+                
+                }else{
+                    with(selectobject){
+                        show_debug_message("gone?");
+                        instance_destroy();
+                    } 
+                }
+                /*
+                if(instance_exists(selectobject)){
+                    
+                }
+                */
+                //create object
+                selectobject = instance_create((mouse_x div sizegrid)*32,(mouse_y div sizegrid)*32,placeholder[i]);
+                selectobject.visible = true;
+                placeobject = placeblock[i]
                 alarm[0] = room_speed/6;
             }
         }
@@ -88,23 +107,26 @@ if(isbuild){
     //}
     
     
-    
     //place preview
-    if(instance_exists(obj_placer)){
-        obj_placer.visible = true;
+    if(selectobject != noone){
+        selectobject.visible = true;
         //divide and floor and time
-        obj_placer.x = (mouse_x div sizegrid)*32;
-        obj_placer.y = (mouse_y div sizegrid)*32;
+        selectobject.x = (mouse_x div sizegrid)*32;
+        selectobject.phy_position_x = (mouse_x div sizegrid)*32;
+        selectobject.y = (mouse_y div sizegrid)*32;
+        selectobject.phy_position_y = (mouse_y div sizegrid)*32;
+        //show_debug_message("found object");
+    }else{
+        //show_debug_message("error object");
     }
     
     //place object
     if(mouse_check_button_pressed(mb_left) == true and isboundbox = false ){
-        instance_create((mouse_x div sizegrid)*32,(mouse_y div sizegrid)*32,selectobject);
+        instance_create((mouse_x div sizegrid)*32, (mouse_y div sizegrid)*32, placeobject);
     }
-    }else{
-        if(instance_exists(obj_placer)){
-            with(obj_placer){
-                visible = false;
-            }
-        }
+    
+}else{
+    if(instance_exists(selectobject)){
+        selectobject.visible = false;
     }
+}

@@ -36,24 +36,33 @@ buildmenu[3] = "Blocks";
 isboundbox = false;
 issnap = false;
 sizegrid = 32;
-selectobject = obj_rock;
+
+selectobject = noone;
+placeobject = noone;
 
 //build options
 list_count = 0;
 list_index = 0;
 list_max = 5;
 
-
-//tmp list
+//list tmp need improve
 slotlist[0] = "Dirt";
 slotlist[1] = "Rock";
-slotlist[2] = "Ruin";
-slotlist[3] = "Sand";
-slotlist[4] = "Water";
-slotlist[5] = "Lava";
-slotlist[6] = "Hole";
-slotlist[7] = "Mud";
-
+slotlist[2] = "Sand";
+slotlist[3] = "Water";
+slotlist[4] = "Lava";
+// this deal with detect collisions
+placeholder[0] = obj_dirt_ph;
+placeholder[1] = obj_rock_ph;
+placeholder[2] = obj_sand_ph;
+placeholder[3] = obj_water_ph;
+placeholder[4] = obj_lava_ph;
+// this place the world
+placeblock[0] = obj_dirt;
+placeblock[1] = obj_rock;
+placeblock[2] = obj_sand;
+placeblock[3] = obj_water;
+placeblock[4] = obj_lava;
 </string>
           </argument>
         </arguments>
