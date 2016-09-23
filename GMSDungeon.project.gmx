@@ -61,6 +61,11 @@
       <sprite>sprites\spr_wall</sprite>
       <sprite>sprites\spr_door</sprite>
       <sprite>sprites\spr_rock</sprite>
+      <sprite>sprites\spr_grass</sprite>
+      <sprite>sprites\spr_sand</sprite>
+      <sprite>sprites\spr_water</sprite>
+      <sprite>sprites\spr_mud</sprite>
+      <sprite>sprites\spr_lava</sprite>
     </sprites>
     <sprites name="pickups">
       <sprite>sprites\spr_health</sprite>
@@ -174,7 +179,17 @@
       <object>objects\obj_wall</object>
       <object>objects\obj_door</object>
       <object>objects\obj_rock</object>
+      <object>objects\obj_rock_ph</object>
       <object>objects\obj_placer</object>
+      <object>objects\obj_water</object>
+      <object>objects\obj_water_ph</object>
+      <object>objects\obj_dirt</object>
+      <object>objects\obj_dirt_ph</object>
+      <object>objects\obj_lava</object>
+      <object>objects\obj_lava_ph</object>
+      <object>objects\obj_sand</object>
+      <object>objects\obj_sand_ph</object>
+      <object>objects\obj_detect_ph</object>
     </objects>
     <objects name="weapons">
       <object>objects\obj_weapon_animation</object>
