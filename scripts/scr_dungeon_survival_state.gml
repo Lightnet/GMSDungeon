@@ -7,6 +7,7 @@ if(obj_input.camtoggle_key){
             with(obj_view){
                 bcameracontrol = false;
                 bfollowplayer = true;
+                global._display_player = CONTROL_PLAYER;
             }
         }
     }else{
@@ -15,6 +16,7 @@ if(obj_input.camtoggle_key){
             with(obj_view){
                 bcameracontrol = true;
                 bfollowplayer = false;
+                global._display_player = CONTROL_DUNGEON;                
             }
         }
     }

@@ -26,6 +26,13 @@
           <argument>
             <kind>1</kind>
             <string>/// initialize the input object
+global._ismenu = false;
+global._ishud = true;
+global._display_dungeon = true;
+global._display_player = true;
+
+global._controller = CONTROL_PLAYER;
+
 scr_get_input();
 </string>
           </argument>

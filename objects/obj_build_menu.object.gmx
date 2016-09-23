@@ -38,6 +38,11 @@ issnap = false;
 sizegrid = 32;
 selectobject = obj_rock;
 
+//build options
+list_max = 5;
+
+
+
 //tmp list
 blocklist[0] = "Dirt";
 blocklist[1] = "Rock";

@@ -1,4 +1,10 @@
 ///scr_move_state
+if(global._display_player == CONTROL_PLAYER){
+}else{
+    if(len == 0) image_index = 0;
+    exit;
+}
+
 movement = MOVE;
 
 if (obj_input.dash_key){

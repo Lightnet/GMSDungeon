@@ -135,19 +135,20 @@
       <script>scripts\scr_dungeon_survival_state.gml</script>
       <script>scripts\scr_dungeon_wave_hud.gml</script>
       <script>scripts\scr_dungeon_wave_state.gml</script>
-      <script>scripts\scr_status_menu.gml</script>
-      <script>scripts\scr_skills_menu.gml</script>
       <script>scripts\scr_dungeon_menu_select.gml</script>
-      <script>scripts\scr_creatures_menu.gml</script>
-      <script>scripts\scr_abilities_menu.gml</script>
-      <script>scripts\scr_research_menu.gml</script>
-      <script>scripts\scr_items_menu.gml</script>
-      <script>scripts\scr_status_menu_state.gml</script>
-      <script>scripts\scr_items_menu_state.gml</script>
-      <script>scripts\scr_creatures_menu_state.gml</script>
-      <script>scripts\scr_research_menu_state.gml</script>
-      <script>scripts\scr_abilities_menu_state.gml</script>
       <script>scripts\scr_dungeon_menu_state.gml</script>
+      <script>scripts\scr_status_menu.gml</script>
+      <script>scripts\scr_status_menu_state.gml</script>
+      <script>scripts\scr_abilities_menu.gml</script>
+      <script>scripts\scr_abilities_menu_state.gml</script>
+      <script>scripts\scr_skills_menu.gml</script>
+      <script>scripts\scr_skills_menu_state.gml</script>
+      <script>scripts\scr_creatures_menu.gml</script>
+      <script>scripts\scr_creatures_menu_state.gml</script>
+      <script>scripts\scr_research_menu.gml</script>
+      <script>scripts\scr_research_menu_state.gml</script>
+      <script>scripts\scr_items_menu.gml</script>
+      <script>scripts\scr_items_menu_state.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
@@ -198,20 +199,24 @@
       <object>objects\obj_speaker</object>
       <object>objects\obj_dialog</object>
       <object>objects\obj_sign</object>
+      <object>objects\obj_logging</object>
     </objects>
     <objects name="projectiles">
       <object>objects\obj_projectile</object>
     </objects>
-    <object>objects\obj_inventory</object>
-    <object>objects\obj_nextroom</object>
-    <object>objects\obj_logging</object>
-    <object>objects\obj_room_init</object>
-    <object>objects\obj_room_timer</object>
-    <object>objects\obj_room_set</object>
+    <objects name="inventory">
+      <object>objects\obj_inventory</object>
+    </objects>
+    <objects name="room">
+      <object>objects\obj_nextroom</object>
+      <object>objects\obj_room_init</object>
+      <object>objects\obj_room_timer</object>
+      <object>objects\obj_room_set</object>
+    </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_start_menu</room>
     <room>rooms\rm_dungeon</room>
+    <room>rooms\rm_start_menu</room>
     <room>rooms\rm_test0</room>
     <room>rooms\rm_p0</room>
     <room>rooms\rm_p1</room>

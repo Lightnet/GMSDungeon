@@ -62,6 +62,10 @@ if(instance_exists(obj_player)){
 
 if(bfollowplayer){
     if(instance_exists(obj_player)){
+        //fixed view port to update
+        view_xview[0] = x - view_wview / 2;
+        view_yview[0] = y - view_hview / 2;    
+        //add lag move here
         x += (obj_player.x - x) * 0.1;
         y += (obj_player.y - y) * 0.1;
     }
