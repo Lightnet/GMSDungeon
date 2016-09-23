@@ -73,28 +73,25 @@ if(isbuild){
                 show_debug_message(string(slotlist[i]));
                 //check if select exist destory
                 if(selectobject == noone){
-                
-                
                 }else{
                     with(selectobject){
-                        show_debug_message("gone?");
+                        //show_debug_message("gone?");
                         instance_destroy();
                     } 
                 }
-                /*
-                if(instance_exists(selectobject)){
-                    
-                }
-                */
                 //create object
                 selectobject = instance_create((mouse_x div sizegrid)*32,(mouse_y div sizegrid)*32,placeholder[i]);
                 selectobject.visible = true;
-                placeobject = placeblock[i]
+                placeobject = placeblock[i];
                 alarm[0] = room_speed/6;
             }
         }
-        draw_text(48,yy+((32+4)*list_count)-64,slotlist[i]);        
-        draw_sprite(spr_slot,0,4,yy+((32+4)*list_count)-64);
+        draw_text(48,yy+((32+4)*list_count)-64,slotlist[i]);
+        if(imagesprite[i] != noone){
+            draw_sprite(imagesprite[i],0,4,yy+((32+4)*list_count)-64);
+        }else{
+            draw_sprite(spr_slot,0,4,yy+((32+4)*list_count)-64);
+        }
         list_count++;
     }
     //var xx_p = yy - 64 + 32*0;//top

@@ -65,6 +65,7 @@
       <sprite>sprites\spr_sand</sprite>
       <sprite>sprites\spr_water</sprite>
       <sprite>sprites\spr_mud</sprite>
+      <sprite>sprites\spr_dirt</sprite>
       <sprite>sprites\spr_lava</sprite>
     </sprites>
     <sprites name="pickups">
@@ -159,7 +160,7 @@
       <script>scripts\scr_items_menu_state.gml</script>
     </scripts>
     <scripts name="build_scripts">
-      <script>scripts\scr_build_menu.gml</script>
+      <script>scripts\scr_dungeon_build_menu.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
