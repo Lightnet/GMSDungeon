@@ -81,6 +81,7 @@
     <sprite>sprites\sprite26</sprite>
     <sprites name="ui">
       <sprite>sprites\spr_indicator</sprite>
+      <sprite>sprites\spr_slot</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -149,6 +150,9 @@
       <script>scripts\scr_research_menu_state.gml</script>
       <script>scripts\scr_items_menu.gml</script>
       <script>scripts\scr_items_menu_state.gml</script>
+    </scripts>
+    <scripts name="build_scripts">
+      <script>scripts\scr_build_menu.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
