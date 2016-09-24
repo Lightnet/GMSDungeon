@@ -1,6 +1,7 @@
 ///build menu
 if(isbuild){
     isboundbox = false;
+    iscollide = false;
     var xx = display_get_gui_width()/2;
     var yy = display_get_gui_height()/2;
     draw_text(xx,16,"BUILD MODE");
@@ -45,6 +46,29 @@ if(isbuild){
         isboundbox = true;
     }else{
         //show_debug_message("out bound?");
+    }
+    
+    if(screenx > 4 and screenx < (32+4) and screeny > (display_get_gui_height()-32) and screeny < (display_get_gui_height())){    
+        //show_debug_message("in bound?");
+        if(mouse_check_button(mb_left) == true and alarm[0] <= 0){
+            if(issnap){
+                issnap = false;
+                draw_sprite(spr_grid_off,0,4,display_get_gui_height()-32);
+            }else{
+                issnap = true;
+                draw_sprite(spr_grid_on,0,4,display_get_gui_height()-32);
+            }
+            alarm[0] = room_speed/6;
+            //show_debug_message("snap?");
+        }
+        isboundbox = true;
+    }else{
+        //show_debug_message("out bound?");
+    }
+    if(issnap){
+        draw_sprite(spr_grid_on,0,4,display_get_gui_height()-32);
+    }else{
+        draw_sprite(spr_grid_off,0,4,display_get_gui_height()-32);
     }
     //draw up and down button
     draw_sprite(spr_up,0,4,yy+((32+4)*-1)-64); 
@@ -103,15 +127,28 @@ if(isbuild){
         //show_debug_message("out bound?");
     //}
     
-    
     //place preview
-    if(selectobject != noone){
-        selectobject.visible = true;
+    if(instance_exists(selectobject)){
+        //selectobject.visible = true;
         //divide and floor and time
-        selectobject.x = (mouse_x div sizegrid)*32;
-        selectobject.phy_position_x = (mouse_x div sizegrid)*32;
-        selectobject.y = (mouse_y div sizegrid)*32;
-        selectobject.phy_position_y = (mouse_y div sizegrid)*32;
+        if(issnap){
+            selectobject.phy_position_x = (mouse_x div sizegrid)*32;
+            selectobject.phy_position_y = (mouse_y div sizegrid)*32;
+            if(place_meeting((mouse_x div sizegrid)*32, (mouse_y div sizegrid)*32, selectobject)){
+                show_debug_message("collision");
+            }else{
+                show_debug_message("no collision");
+            }
+        }else{
+            selectobject.phy_position_x = mouse_x;
+            selectobject.phy_position_y = mouse_y;
+            if(place_meeting(mouse_x , mouse_y, selectobject)){
+                show_debug_message("collision");
+            }else{
+                show_debug_message("no collision");
+            }
+        }
+        
         //show_debug_message("found object");
     }else{
         //show_debug_message("error object");
@@ -119,7 +156,11 @@ if(isbuild){
     
     //place object
     if(mouse_check_button_pressed(mb_left) == true and isboundbox = false ){
-        instance_create((mouse_x div sizegrid)*32, (mouse_y div sizegrid)*32, placeobject);
+        if(issnap){
+            instance_create((mouse_x div sizegrid)*32, (mouse_y div sizegrid)*32, placeobject);
+        }else{
+            instance_create(mouse_x, mouse_y, placeobject);
+        }
     }
     
 }else{

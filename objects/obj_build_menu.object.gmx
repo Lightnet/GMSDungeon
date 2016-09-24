@@ -34,7 +34,7 @@ buildmenu[2] = "Creatures";
 buildmenu[3] = "Blocks";
 
 isboundbox = false;
-issnap = false;
+issnap = true;
 sizegrid = 32;
 
 selectobject = noone;
@@ -44,6 +44,7 @@ placeobject = noone;
 list_count = 0;
 list_index = 0;
 list_max = 5;
+iscollide = false;
 
 //display name
 slotlist[0] = "Dirt";
