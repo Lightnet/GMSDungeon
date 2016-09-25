@@ -61,11 +61,18 @@ imagesprite[3] = spr_water;
 imagesprite[4] = spr_lava;
 
 // this deal with detect collisions
-placeholder[0] = obj_dirt_ph;
-placeholder[1] = obj_rock_ph;
-placeholder[2] = obj_sand_ph;
-placeholder[3] = obj_water_ph;
-placeholder[4] = obj_lava_ph;
+placeholder[0] = obj_detect_ph;
+placeholder[1] = obj_detect_ph;
+placeholder[2] = obj_detect_ph;
+placeholder[3] = obj_detect_ph;
+placeholder[4] = obj_detect_ph;
+
+//placeholder[0] = obj_dirt_ph;
+//placeholder[1] = obj_rock_ph;
+//placeholder[2] = obj_sand_ph;
+//placeholder[3] = obj_water_ph;
+//placeholder[4] = obj_lava_ph;
+
 // this place the world
 placeblock[0] = obj_dirt;
 placeblock[1] = obj_rock;

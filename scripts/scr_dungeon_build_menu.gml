@@ -134,22 +134,10 @@ if(isbuild){
         if(issnap){
             selectobject.phy_position_x = (mouse_x div sizegrid)*32;
             selectobject.phy_position_y = (mouse_y div sizegrid)*32;
-            if(place_meeting((mouse_x div sizegrid)*32, (mouse_y div sizegrid)*32, selectobject)){
-                show_debug_message("collision");
-            }else{
-                show_debug_message("no collision");
-            }
         }else{
             selectobject.phy_position_x = mouse_x;
             selectobject.phy_position_y = mouse_y;
-            if(place_meeting(mouse_x , mouse_y, selectobject)){
-                show_debug_message("collision");
-            }else{
-                show_debug_message("no collision");
-            }
         }
-        
-        //show_debug_message("found object");
     }else{
         //show_debug_message("error object");
     }

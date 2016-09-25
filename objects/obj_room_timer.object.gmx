@@ -8,6 +8,31 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//global.room_timer_state[room] = true;
+//global.room_timer[room] = 0;
+//global.rooms[room] = room;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -25,16 +50,18 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///
-//show_debug_message("update?");
-//show_debug_message(string(array_length_1d(global.room_timer[room])));
+            <string>/// update room step
 
-//show_debug_message(string(global.room_timer));
-//show_debug_message("===");
-//repeat(2){
-//if(room != rm_p1) exit;
-//with(rm_p1){
+for(var i= 0; i &lt; array_length_1d(global.room_timer_state); i++) {
+    if (global.room_timer_state[i]) {
+        global.room_timer[i] ++;
+    }
+}
+global.room_timer_state[room] = false;
+
+/*
 repeat(global.room_timer[room]){
+    //show_debug_message("update?");
     with(all){
         if(object_index != obj_room_timer)
             event_perform(ev_step,ev_step_begin);
@@ -48,7 +75,111 @@ repeat(global.room_timer[room]){
             event_perform(ev_step,ev_step_end);
     }    
 }
-global.room_timer_state[room] = false;
+*/
+
+for(var i= 0; i &lt; array_length_1d(global.room_timer_state); i++) {
+    //show_debug_message(room_get_name(global.rooms[i]) + ":"+ string(global.room_timer_state[i]) );    
+    if (global.room_timer_state[i]) {
+        //show_debug_message("true?");
+        with(global.rooms[i]){
+            with(all){
+                if(object_index != obj_room_timer)
+                    event_perform(ev_step,ev_step_begin);
+            }
+            with(all){
+                if(object_index != obj_room_timer)
+                    event_perform(ev_step,ev_step_normal);
+            }
+            with(all){
+                if(object_index != obj_room_timer)
+                    event_perform(ev_step,ev_step_end);
+            }            
+        }
+    }
+}
+
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>global.room_timer_state[room] = true;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///initialize each room step
+global.room_timer_state[room] = true;
+global.room_timer[room] = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///room draw
+draw_text(4,16,"ROOM: "+room_get_name(room));
+//show_debug_message( string(array_length_1d(global.room_timer_state)));
+
+for(var i= 0; i &lt; array_length_1d(global.room_timer_state); i++) {
+    draw_text(4,(16+4)*i+32,"ROOM:"+room_get_name(global.rooms[i]) + ":"+ string(global.room_timer_state[i]) );    
+    //if (global.room_timer_state[i]) {
+        //show_debug_message("true?");
+    //}
+}
 </string>
           </argument>
         </arguments>

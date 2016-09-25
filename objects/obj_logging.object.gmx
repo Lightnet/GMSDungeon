@@ -51,7 +51,7 @@ next_count = 0;
             <kind>1</kind>
             <string>time_count++;
 
-if(time_count&gt;30){
+if(time_count&gt;100){
     time_count = 0;
     next_count++;
     show_debug_message(string(next_count));
