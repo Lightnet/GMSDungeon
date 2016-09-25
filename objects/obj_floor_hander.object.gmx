@@ -25,32 +25,32 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// var
-global.username = "";
-///Sets Alphanurmical characters
-global.g_ishud = false;
-//Characters
-c[0] = "";
-//create character letters
-for(var i= 0; i&lt;36; i++)
-{
-    if(i&lt;10) char = i;
-    else char = i+7;
-    
-    c[i] = chr(48+char);
-    show_debug_message(c[i] );
-}
-//Cursor
-horz = 0;
-vert = 0;
-menu = 0;
+            <string>//how many floor tiles have placed?
+floors_placed = 0;
+floors_maxplaced = 3000;
+//what direction are you facing
+dir = 1;
+//random the seed
+//randomize();
+rand_x = random_range(0,room_width);
+rand_y = random_range(0,room_height);
 
+//attach values to the grid
+x = rand_x -(rand_x%32);
+y = rand_y -(rand_y%32);
+//store the top left conver of the map
+x_left = x;
+y_upper = y;
+x_right = 0;
+y_lower = 0;
+//make generation fast
+room_speed = 600;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="64">
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -67,66 +67,59 @@ menu = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Keyboard/Draw
-
-var xx = display_get_gui_width()/2;
-var yy = display_get_gui_height()/2;
-
-//Draw Characters
-draw_set_halign(fa_center);
-var line = 0;
-var space = 0;
-var lineEnd = 11;
-
-for(var i = 0; i &lt; array_length_1d(c); i++)
-{
-    if(space &gt; lineEnd)
-    {
-        space = 0;
-        line++;
-    }
-    draw_set_colour(c_white);
-    draw_text( (xx)+(space*25)-128,(yy)+(line*17)+32,c[i]);
-    space++;
+            <string>///step create floor
+//place a floor tile
+var floor_p = instance_create(x,y,obj_floor);
+//floor_p.phy_position_x = x;
+//floor_p.phy_position_y = y;
+//count one more floor tiles
+floors_placed++;
+//pickup a random direction
+dir = choose(1,2,3,4,dir,dir,dir,dir);
+//move forward (relative to direction) 1 cell
+switch(dir){
+    case 1:
+        x += 32;
+        break;
+    case 2:
+        y += 32;
+        break;
+    case 3:
+        x -= 32;
+        break;
+    case 4:
+        y -= 32;
+        break;
 }
-
-//Draw 2 extra Buttons
-draw_set_colour(c_white);
-draw_text((xx)-30, (yy), "DEL[D]");
-draw_text((xx)+30, (yy), "END[C]");
-
-if(keyboard_check_pressed(vk_up)) vert--;
-if(keyboard_check_pressed(vk_down)) vert++;
-if(keyboard_check_pressed(vk_left)) horz--;
-if(keyboard_check_pressed(vk_right)) horz++;
-if(horz &lt; 0) horz = 11;
-if(horz &gt; 11) horz = 0;
-if(vert &lt; 0) vert = 2;
-if(vert &gt; 2) vert = 0;
-draw_sprite(spr_keyboard_curser, 0, (xx)+(horz*25)-128-8, (yy)+(vert*17)+32);
-// Interact with Menu
-//Del letter character
-if(keyboard_check_pressed(ord('D'))){
-    //show_debug_message("D");
-    global.username = string_copy(global.username, 0, string_length(global.username)-1);
+//show_debug_message("x:"+string(x)+" y:"+string(y));
+//check for being out the room
+if(x &lt; 32){
+    x = 32;
 }
-// END Key
-if(keyboard_check_pressed(ord('C'))){
-    //show_debug_message("C");
+if(x &gt; room_width - 64){
+    x = room_width - 64;
 }
-// add letter
-if(keyboard_check_pressed(ord('S')))
-{
-    if(string_length(global.username) &lt; 32){//limited character letters
-        global.username += c[horz+(12*vert)];
-    }
+if(y &lt; 32){
+    y = 32;
 }
-
-//Draw Name
-draw_text((xx),(yy)- 32, "NAME:[ "+global.username+ " ]");
-//reset align text
-draw_set_halign(fa_left);
-    
+if(y &gt; room_height - 64){
+    y = room_height - 64;
+}
+//store top-left and bottom-right coners of the map
+if(x &lt; x_left){x_left = x};
+if(x &gt; x_right){x_right = x};
+if(y &lt; y_upper){y_upper = y};
+if(y &gt; y_lower){y_lower = y};
+//destory if max floors have been placed
+//show_debug_message(string(floors_placed));
+if(floors_placed == floors_maxplaced){
+//    wall_p = instance_create(x_left,y_upper,obj_wall_placer);
+    wall_p = instance_create(0,0,obj_wall_placer);
+    wall_p.stop_x = x_right;
+    wall_p.stop_y = y_lower;
+    //show_debug_message("done?");
+    instance_destroy();
+}
 </string>
           </argument>
         </arguments>

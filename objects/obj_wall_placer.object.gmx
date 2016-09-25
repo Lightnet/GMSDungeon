@@ -25,32 +25,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// var
-global.username = "";
-///Sets Alphanurmical characters
-global.g_ishud = false;
-//Characters
-c[0] = "";
-//create character letters
-for(var i= 0; i&lt;36; i++)
-{
-    if(i&lt;10) char = i;
-    else char = i+7;
-    
-    c[i] = chr(48+char);
-    show_debug_message(c[i] );
-}
-//Cursor
-horz = 0;
-vert = 0;
-menu = 0;
-
+            <string>//stop cycling at those co-ords
+stop_x = 0;
+stop_y = 0;
+//store starting x pos
+start_x = x-32;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="64">
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -67,66 +52,40 @@ menu = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Keyboard/Draw
-
-var xx = display_get_gui_width()/2;
-var yy = display_get_gui_height()/2;
-
-//Draw Characters
-draw_set_halign(fa_center);
-var line = 0;
-var space = 0;
-var lineEnd = 11;
-
-for(var i = 0; i &lt; array_length_1d(c); i++)
-{
-    if(space &gt; lineEnd)
-    {
-        space = 0;
-        line++;
-    }
-    draw_set_colour(c_white);
-    draw_text( (xx)+(space*25)-128,(yy)+(line*17)+32,c[i]);
-    space++;
+            <string>/// step check
+//show_debug_message("start wal?");
+//store the target id number
+target = instance_place(x,y,obj_floor);
+//check for neighbour floors and place walls
+if(instance_exists(target)){
+    if(!place_meeting(x+32,y,obj_floor)){
+        instance_create(x+32,y,obj_wall)
+    };
+    if(!place_meeting(x-32,y,obj_floor)){
+        instance_create(x-32,y,obj_wall)
+    };
+    if(!place_meeting(x,y+32,obj_floor)){
+        instance_create(x,y+32,obj_wall)
+        };
+    if(!place_meeting(x,y-32,obj_floor)){
+        instance_create(x,y-32,obj_wall)
+        show_debug_message("create");
+    };
 }
-
-//Draw 2 extra Buttons
-draw_set_colour(c_white);
-draw_text((xx)-30, (yy), "DEL[D]");
-draw_text((xx)+30, (yy), "END[C]");
-
-if(keyboard_check_pressed(vk_up)) vert--;
-if(keyboard_check_pressed(vk_down)) vert++;
-if(keyboard_check_pressed(vk_left)) horz--;
-if(keyboard_check_pressed(vk_right)) horz++;
-if(horz &lt; 0) horz = 11;
-if(horz &gt; 11) horz = 0;
-if(vert &lt; 0) vert = 2;
-if(vert &gt; 2) vert = 0;
-draw_sprite(spr_keyboard_curser, 0, (xx)+(horz*25)-128-8, (yy)+(vert*17)+32);
-// Interact with Menu
-//Del letter character
-if(keyboard_check_pressed(ord('D'))){
-    //show_debug_message("D");
-    global.username = string_copy(global.username, 0, string_length(global.username)-1);
+if(x &lt; start_x){
+    x = start_x;
 }
-// END Key
-if(keyboard_check_pressed(ord('C'))){
-    //show_debug_message("C");
+if(x == stop_x){
+    y += 32;
+    x = 0;
+}else{
+    x += 32;
 }
-// add letter
-if(keyboard_check_pressed(ord('S')))
-{
-    if(string_length(global.username) &lt; 32){//limited character letters
-        global.username += c[horz+(12*vert)];
-    }
+if(y &gt; stop_y){
+    room_speed = 60;
+    instance_destroy();
 }
-
-//Draw Name
-draw_text((xx),(yy)- 32, "NAME:[ "+global.username+ " ]");
-//reset align text
-draw_set_halign(fa_left);
-    
+//show_debug_message(string(x)+":"+string(y));
 </string>
           </argument>
         </arguments>

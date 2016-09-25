@@ -97,6 +97,8 @@
   </sprites>
   <backgrounds name="background">
     <background>background\bg_grass</background>
+    <background>background\bg_floor</background>
+    <background>background\bg_wall</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -165,6 +167,9 @@
     <scripts name="build_scripts">
       <script>scripts\scr_dungeon_build_menu.gml</script>
     </scripts>
+    <scripts name="generate_dungeon_scripts">
+      <script>scripts\scr_generate_dungeon.gml</script>
+    </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_text</font>
@@ -194,6 +199,7 @@
       <object>objects\obj_sand</object>
       <object>objects\obj_sand_ph</object>
       <object>objects\obj_detect_ph</object>
+      <object>objects\obj_floor</object>
     </objects>
     <objects name="weapons">
       <object>objects\obj_weapon_animation</object>
@@ -231,17 +237,31 @@
       <object>objects\obj_projectile</object>
     </objects>
     <objects name="inventory">
-      <object>objects\obj_inventory</object>
+      <object>objects\obj_player_inventory</object>
+      <object>objects\obj_dungeon_inventory</object>
     </objects>
     <objects name="room">
       <object>objects\obj_nextroom</object>
       <object>objects\obj_room_timer</object>
       <object>objects\obj_room_set</object>
     </objects>
+    <objects name="skills">
+      <object>objects\obj_skill</object>
+      <object>objects\ovj_skill_list</object>
+    </objects>
+    <objects name="quests">
+      <object>objects\obj_quest</object>
+      <object>objects\obj_quest_list</object>
+    </objects>
+    <objects name="level_handlers">
+      <object>objects\obj_floor_hander</object>
+      <object>objects\obj_wall_placer</object>
+    </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_input_name</room>
+    <room>rooms\rm_simple_generate_level</room>
     <room>rooms\rm_dungeon</room>
+    <room>rooms\rm_input_name</room>
     <room>rooms\rm_start_menu</room>
     <room>rooms\rm_dimension_home</room>
     <room>rooms\rm_p0</room>

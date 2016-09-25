@@ -141,6 +141,7 @@ if(isbuild){
     }else{
         //show_debug_message("error object");
     }
+    show_debug_message(string(mouse_x)+":"+string(mouse_x));
     
     //place object
     if(mouse_check_button_pressed(mb_left) == true and isboundbox = false ){
