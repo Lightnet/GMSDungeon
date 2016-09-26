@@ -175,6 +175,7 @@
       <script>scripts\scr_move.gml</script>
       <script>scripts\scr_grid_place_meeting.gml</script>
     </scripts>
+    <script>scripts\scr_get_path_to_player.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_text</font>

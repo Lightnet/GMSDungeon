@@ -37,6 +37,9 @@ var height = room_height div CELL_HEIGHT;
 //create the grid
 grid = ds_grid_create(width, height);
 
+//create pathfinding grid
+grid_path = mp_grid_create(0,0,width,height,CELL_WIDTH,CELL_HEIGHT);
+
 //fill the grid with the void
 ds_grid_set_region(grid, 0, 0, width - 1, height - 1, VOID);
 
@@ -52,9 +55,6 @@ if (show_question("Would like to load the room?")){
     // randomize the world
     randomize();
 }
-
-
-
 
 
 //create the controller in the center of the grid
@@ -129,6 +129,8 @@ for(var yy = 0;yy &lt; height;yy++){
             if(point_distance(ex, ey,obj_player_box.x,obj_player_box.y ) &gt; 80 &amp;&amp; irandom(odds) == odds ){
                 instance_create(ex,ey,obj_enemy_box);
             }
+        }else{
+            mp_grid_add_cell(grid_path, xx, yy);
         }
     }
 }
@@ -218,6 +220,31 @@ for(var yy=0; yy &lt; height*2;yy++){
 
 
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// destory the grid
+ds_grid_destroy(grid);
+mp_grid_destroy(grid_path);
 </string>
           </argument>
         </arguments>
