@@ -32,6 +32,8 @@ var vspd = (keyboard_check(vk_down) - keyboard_check(vk_up))*spd;
 
 //move
 scr_move(hspd,vspd);
+
+depth = -y;
 </string>
           </argument>
         </arguments>

@@ -100,6 +100,7 @@
     <background>background\bg_grass</background>
     <background>background\bg_floor</background>
     <background>background\bg_wall</background>
+    <background>background\bg_walltiles</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
