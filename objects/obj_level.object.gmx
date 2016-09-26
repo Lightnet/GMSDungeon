@@ -47,6 +47,9 @@ randomize();
 var cx = width div 2;
 var cy = height div 2;
 
+//create the player
+instance_create(cx*CELL_WIDTH+CELL_WIDTH/2,cy*CELL_HEIGHT+CELL_HEIGHT/2,obj_player_box);
+
 // give the controller a random direction
 var cdir = irandom(3);
 

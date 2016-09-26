@@ -56,6 +56,7 @@
         <sprite>sprites\spr_chinlin_stand_right</sprite>
         <sprite>sprites\spr_chinlin_stand_up</sprite>
       </sprites>
+      <sprite>sprites\spr_player_box</sprite>
     </sprites>
     <sprites name="tiles">
       <sprite>sprites\spr_wall</sprite>
@@ -169,6 +170,8 @@
     </scripts>
     <scripts name="generate_dungeon_scripts">
       <script>scripts\scr_generate_dungeon.gml</script>
+      <script>scripts\scr_move.gml</script>
+      <script>scripts\scr_grid_place_meeting.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
@@ -258,6 +261,7 @@
       <object>objects\obj_wall_placer</object>
       <object>objects\obj_level</object>
     </objects>
+    <object>objects\obj_player_box</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_generate_dungoen</room>
