@@ -40,8 +40,22 @@ grid = ds_grid_create(width, height);
 //fill the grid with the void
 ds_grid_set_region(grid, 0, 0, width - 1, height - 1, VOID);
 
-// randomize the world
-randomize();
+//load a room
+if (show_question("Would like to load the room?")){
+
+    var key = get_string("What is the name of the room?","default");
+    ini_open("save.ini");
+    var seed = ini_read_real("rooms",key, 0);
+    random_set_seed(seed);
+    
+}else{
+    // randomize the world
+    randomize();
+}
+
+
+
+
 
 //create the controller in the center of the grid
 var cx = width div 2;
@@ -83,10 +97,20 @@ repeat(1000){
 for(var yy = 1;yy &lt; height - 1;yy++){
     for(var xx = 1;xx &lt; width - 1;xx++){
         if(grid[# xx,yy] == FLOOR){
+            //check wall
             if(grid[# xx+1, yy] != FLOOR){grid[# xx+1, yy] = WALL;}
             if(grid[# xx-1, yy] != FLOOR){grid[# xx-1, yy] = WALL;}
             if(grid[# xx, yy+1] != FLOOR){grid[# xx, yy+1] = WALL;}
             if(grid[# xx, yy-1] != FLOOR){grid[# xx, yy-1] = WALL;}
+        }    
+    }
+}
+
+//add the walls
+for(var yy = 1;yy &lt; height - 1;yy++){
+    for(var xx = 1;xx &lt; width - 1;xx++){
+        if(grid[# xx,yy] == WALL &amp;&amp; grid[# xx+1,yy] == FLOOR &amp;&amp; grid[# xx-1,yy] == FLOOR&amp;&amp; grid[# xx,yy+1] == FLOOR&amp;&amp; grid[# xx,yy-1] == FLOOR){
+            grid[# xx,yy] = FLOOR;
         }    
     }
 }
@@ -97,6 +121,14 @@ for(var yy = 0;yy &lt; height;yy++){
         if(grid[# xx,yy] == FLOOR){
             //draw the floor
             tile_add(bg_floor, 0,0, CELL_WIDTH, CELL_HEIGHT,xx*CELL_WIDTH,yy*CELL_HEIGHT,0);
+            
+            //add some enemy
+            var odds = 20;
+            var ex = xx*CELL_WIDTH+CELL_WIDTH/2;
+            var ey = yy*CELL_HEIGHT+CELL_HEIGHT/2
+            if(point_distance(ex, ey,obj_player_box.x,obj_player_box.y ) &gt; 80 &amp;&amp; irandom(odds) == odds ){
+                instance_create(ex,ey,obj_enemy_box);
+            }
         }
     }
 }
@@ -186,6 +218,34 @@ for(var yy=0; yy &lt; height*2;yy++){
 
 
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="83">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// save the room
+ini_open("save.ini");
+var key = get_string("what will you name the room","default");
+var val = random_get_seed();
+ini_write_real("rooms",key,val);
+ini_close();
 </string>
           </argument>
         </arguments>

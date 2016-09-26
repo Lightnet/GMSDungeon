@@ -57,6 +57,7 @@
         <sprite>sprites\spr_chinlin_stand_up</sprite>
       </sprites>
       <sprite>sprites\spr_player_box</sprite>
+      <sprite>sprites\spr_enemy_box</sprite>
     </sprites>
     <sprites name="tiles">
       <sprite>sprites\spr_wall</sprite>
@@ -263,6 +264,7 @@
       <object>objects\obj_level</object>
     </objects>
     <object>objects\obj_player_box</object>
+    <object>objects\obj_enemy_box</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_generate_dungoen</room>
