@@ -263,6 +263,7 @@
       <object>objects\obj_floor_hander</object>
       <object>objects\obj_wall_placer</object>
       <object>objects\obj_level</object>
+      <object>objects\obj_restart</object>
     </objects>
     <object>objects\obj_player_box</object>
     <object>objects\obj_enemy_box</object>

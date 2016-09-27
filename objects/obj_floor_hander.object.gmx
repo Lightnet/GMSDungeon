@@ -113,8 +113,8 @@ if(y &gt; y_lower){y_lower = y};
 //destory if max floors have been placed
 //show_debug_message(string(floors_placed));
 if(floors_placed == floors_maxplaced){
-//    wall_p = instance_create(x_left,y_upper,obj_wall_placer);
-    wall_p = instance_create(0,0,obj_wall_placer);
+    wall_p = instance_create(x_left,y_upper,obj_wall_placer);
+    //wall_p = instance_create(0,0,obj_wall_placer);
     wall_p.stop_x = x_right;
     wall_p.stop_y = y_lower;
     //show_debug_message("done?");
