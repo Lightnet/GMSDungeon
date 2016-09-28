@@ -28,10 +28,12 @@
             <string>/// initialize build
 isbuild = false;
 
-buildmenu[0] = "Tools";
+buildmenu[0] = "Blocks";
 buildmenu[1] = "Traps";
-buildmenu[2] = "Creatures";
-buildmenu[3] = "Blocks";
+buildmenu[2] = "Tools";
+buildmenu[3] = "Items";
+buildmenu[4] = "Creaures";
+
 
 isboundbox = false;
 issnap = true;
@@ -53,6 +55,42 @@ pickobject = noone;//pick object in the room
 pickid = -1;
 
 //display name
+slotlist[0, 0] = "Wall";
+slotlist[0, 1] = spr_wall;
+slotlist[0, 2] = obj_wall_ph;
+slotlist[0, 3] = obj_wall;
+
+slotlist[1, 0] = "Floor";
+slotlist[1, 1] = spr_floor;
+slotlist[1, 2] = obj_floor_ph;
+slotlist[1, 3] = obj_floor;
+
+slotlist[2, 0] = "Dirt";
+slotlist[2, 1] = spr_dirt;
+slotlist[2, 2] = obj_dirt_ph;
+slotlist[2, 3] = obj_dirt;
+
+slotlist[3, 0] = "Rock";
+slotlist[3, 1] = spr_rock;
+slotlist[3, 2] = obj_rock_ph;
+slotlist[3, 3] = obj_rock;
+
+slotlist[4, 0] = "Sand";
+slotlist[4, 1] = spr_sand;
+slotlist[4, 2] = obj_sand_ph;
+slotlist[4, 3] = obj_sand;
+
+slotlist[5, 0] = "Water";
+slotlist[5, 1] = spr_water;
+slotlist[5, 2] = obj_water_ph;
+slotlist[5, 3] = obj_water;
+
+slotlist[6, 0] = "Lava";
+slotlist[6, 1] = spr_lava;
+slotlist[6, 2] = obj_lava_ph;
+slotlist[6, 3] = obj_lava;
+
+/*
 slotlist[0] = "Wall";
 slotlist[1] = "Floor";
 slotlist[2] = "Dirt";
@@ -87,6 +125,14 @@ placeblock[3] = obj_rock;
 placeblock[4] = obj_sand;
 placeblock[5] = obj_water;
 placeblock[6] = obj_lava;
+*/
+
+//show_debug_message("object_get_name");
+//for (var i = 0; i &lt; instance_count; i++){
+    //with (instance_id[i]){
+        //show_debug_message(string(object_get_name(instance_id[i].object_index)));
+    //}
+//}
 </string>
           </argument>
         </arguments>

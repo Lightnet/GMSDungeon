@@ -21,11 +21,10 @@ if(isbuild){
     }    
     draw_text(xx,32,"Select: "+id_name);
     
-    
     //draw text h menu
     for (var i = 0; i < array_length_1d(buildmenu); i++)
     {
-        draw_text(xx+(i*80)-128, 64, string(buildmenu[i]));
+        draw_text(xx+(i*80)-128, 64, string( buildmenu[i] ));
     }
     
     var screenx = device_mouse_x_to_gui(0);
@@ -97,21 +96,23 @@ if(isbuild){
         list_index = 0;
     }
     //check if array list max list to not move
-    if(array_length_1d(slotlist) <= list_max){
+    if(array_height_2d(slotlist) <= list_max){
         list_index = 0;
     }else{
-        if(list_index > array_length_1d(slotlist) - list_max){
-            list_index = array_length_1d(slotlist) - list_max;
+        if(list_index > array_height_2d(slotlist) - list_max){
+            list_index = array_height_2d(slotlist) - list_max;
         }
     }
     
-    for (i = list_index; i < array_length_1d(slotlist); i++){    
+    //show_debug_message(string(array_height_2d(slotlist)));
+    
+    for (i = list_index; i < array_height_2d(slotlist); i++){    
         if(list_count >= list_max){
             break;
         }
         if(screenx > 4 and screenx < (32+4) and screeny > (yy - 64 + (32+4)*list_count) and screeny < (yy - 32 + (32+4)*list_count)){    
             if(mouse_check_button(mb_left) == true and alarm[0] <= 0){
-                show_debug_message(string(slotlist[i]));
+                //show_debug_message(string(slotlist[i,0]));
                 //check if select exist destory
                 if(selectobject == noone){
                 }else{
@@ -121,15 +122,15 @@ if(isbuild){
                     } 
                 }
                 //create object
-                selectobject = instance_create((mouse_x div sizegrid)*32,(mouse_y div sizegrid)*32,placeholder[i]);
+                selectobject = instance_create((mouse_x div sizegrid)*32,(mouse_y div sizegrid)*32,slotlist[ i, 2]);
                 selectobject.visible = true;
-                placeobject = placeblock[i];
+                placeobject = slotlist[ i, 3];
                 alarm[0] = room_speed/6;
             }
         }
-        draw_text(48,yy+((32+4)*list_count)-64,slotlist[i]);
-        if(imagesprite[i] != noone){
-            draw_sprite(imagesprite[i],0,4,yy+((32+4)*list_count)-64);
+        draw_text(48,yy+((32+4)*list_count)-64,slotlist[ i, 0]);
+        if(slotlist[ i, 1] != noone){
+            draw_sprite(slotlist[ i, 1],0,4,yy+((32+4)*list_count)-64);
         }else{
             draw_sprite(spr_slot,0,4,yy+((32+4)*list_count)-64);
         }

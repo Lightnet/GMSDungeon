@@ -59,7 +59,6 @@
     <instance objName="obj_level_generate_dungeon" x="128" y="160" name="inst_0F50FB7B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_view" x="320" y="320" name="inst_797BC475" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_dungeon_stats" x="32" y="160" name="inst_3AC4E05F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_box" x="32" y="256" name="inst_B1637EC8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>-1</PhysicsWorld>

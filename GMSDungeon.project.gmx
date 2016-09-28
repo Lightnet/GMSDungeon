@@ -201,7 +201,6 @@
       <object>objects\obj_detect_ph</object>
       <object>objects\obj_wall</object>
       <object>objects\obj_wall_ph</object>
-      <object>objects\obj_door</object>
       <object>objects\obj_rock</object>
       <object>objects\obj_rock_ph</object>
       <object>objects\obj_water</object>
@@ -279,9 +278,13 @@
     <object>objects\obj_enemy_box</object>
     <objects name="objects">
       <object>objects\obj_box</object>
+      <object>objects\obj_box_ph</object>
     </objects>
     <objects name="systems">
       <object>objects\obj_cursor</object>
+    </objects>
+    <objects name="buildings">
+      <object>objects\obj_door</object>
     </objects>
   </objects>
   <rooms name="rooms">
