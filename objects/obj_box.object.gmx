@@ -25,8 +25,39 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited();
+            <string>///set object data
+event_inherited();
+name = "box";
 objtype = VOID;
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//show_debug_message("selected");
+if(instance_exists(obj_build_menu)){
+    if(obj_build_menu.isbuild){
+        obj_build_menu.pickid = object_index;
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -45,9 +76,9 @@ objtype = VOID;
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
   <PhysicsShapePoints>
-    <point>12,20</point>
-    <point>22,20</point>
-    <point>22,26</point>
-    <point>12,26</point>
+    <point>8,18</point>
+    <point>24,18</point>
+    <point>24,30</point>
+    <point>8,30</point>
   </PhysicsShapePoints>
 </object>

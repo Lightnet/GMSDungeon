@@ -5,6 +5,23 @@ if(isbuild){
     var xx = display_get_gui_width()/2;
     var yy = display_get_gui_height()/2;
     draw_text(xx,16,"BUILD MODE");
+    var id_name = "none";
+        
+    if(pickid != -1){    
+        with(pickid){//object id
+            id_name = name;
+        }
+        if(keyboard_check(vk_delete)){
+            with(pickid){
+                instance_destroy();
+            }
+            pickid = -1;
+            show_debug_message("delete object");
+        }
+    }    
+    draw_text(xx,32,"Select: "+id_name);
+    
+    
     //draw text h menu
     for (var i = 0; i < array_length_1d(buildmenu); i++)
     {
@@ -157,22 +174,23 @@ if(isbuild){
     //show_debug_message(string(mouse_x)+":"+string(mouse_x));
     //place object
     if(mouse_check_button_pressed(mb_left) == true and isboundbox = false ){
-        if(instance_exists(obj_level_generate_dungeon)){
-            //check if object exist on the grid
-            if(obj_level_generate_dungeon.grid_objects[# mouse_x div sizegrid,mouse_y div sizegrid] != noone){
-                var _obj = obj_level_generate_dungeon.grid_objects[# mouse_x div sizegrid,mouse_y div sizegrid];
-                with(_obj){
-                    instance_destroy();
+        if(placeobject !=noone){
+            if(instance_exists(obj_level_generate_dungeon)){
+                //check if object exist on the grid
+                if(obj_level_generate_dungeon.grid_objects[# mouse_x div sizegrid,mouse_y div sizegrid] != noone){
+                    var _obj = obj_level_generate_dungeon.grid_objects[# mouse_x div sizegrid,mouse_y div sizegrid];
+                    with(_obj){
+                        instance_destroy();
+                    }
+                    //assign grid object
+                    //obj_level_generate_dungeon.grid_objects[# mouse_x div sizegrid, mouse_y div sizegrid] = instance_create((mouse_x div sizegrid)*32, (mouse_y div sizegrid)*32, placeobject);            
+                    
+                    if(issnap){
+                        instance_create((mouse_x div sizegrid)*32, (mouse_y div sizegrid)*32, placeobject);
+                    }else{
+                        instance_create(mouse_x, mouse_y, placeobject);
+                    }
                 }
-                //assign grid object
-                //obj_level_generate_dungeon.grid_objects[# mouse_x div sizegrid, mouse_y div sizegrid] = instance_create((mouse_x div sizegrid)*32, (mouse_y div sizegrid)*32, placeobject);            
-                
-                if(issnap){
-                    instance_create((mouse_x div sizegrid)*32, (mouse_y div sizegrid)*32, placeobject);
-                }else{
-                    instance_create(mouse_x, mouse_y, placeobject);
-                }
-                
             }
         }
     }

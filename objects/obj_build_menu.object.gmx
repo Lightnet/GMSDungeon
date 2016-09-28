@@ -46,6 +46,12 @@ list_index = 0;
 list_max = 5;
 iscollide = false;
 
+istile = true;
+isobject = false;
+
+pickobject = noone;//pick object in the room
+pickid = -1;
+
 //display name
 slotlist[0] = "Wall";
 slotlist[1] = "Floor";
@@ -72,6 +78,7 @@ placeholder[3] = obj_rock_ph;
 placeholder[4] = obj_sand_ph;
 placeholder[5] = obj_water_ph;
 placeholder[6] = obj_lava_ph;
+
 // this place the world
 placeblock[0] = obj_wall;
 placeblock[1] = obj_floor;

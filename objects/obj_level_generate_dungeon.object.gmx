@@ -25,12 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// initialize dungeon create
-global.level_generate = true;
-//check level generate dungeon
-if(global.level_generate){
-    script_execute(scr_level_generate_dungeon);
-}
+            <string>
+script_execute(scr_level_generate_dungeon);
+
 </string>
           </argument>
         </arguments>

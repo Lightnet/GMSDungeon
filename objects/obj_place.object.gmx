@@ -26,7 +26,11 @@
           <argument>
             <kind>1</kind>
             <string>/// initialize base stats
-objtype = VOID;
+name = "none";
+objtype = VOID;//FLOOR, WALL, VOID
+isfixed = true;//object off set placement
+isnap = true;//tile
+
 dp_cost = 0;
 dp_sell = 0;
 </string>
