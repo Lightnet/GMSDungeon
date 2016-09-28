@@ -145,11 +145,26 @@ if(isbuild){
     
     //place object
     if(mouse_check_button_pressed(mb_left) == true and isboundbox = false ){
-        if(issnap){
-            instance_create((mouse_x div sizegrid)*32, (mouse_y div sizegrid)*32, placeobject);
-        }else{
-            instance_create(mouse_x, mouse_y, placeobject);
+        if(instance_exists(obj_level_generate_dungeon)){
+            //check if object exist on the grid
+            if(obj_level_generate_dungeon.grid_objects[# mouse_x div sizegrid,mouse_y div sizegrid] != noone){
+                var _obj = obj_level_generate_dungeon.grid_objects[# mouse_x div sizegrid,mouse_y div sizegrid];
+                with(_obj){
+                    instance_destroy();
+                }
+                //assign grid object
+                //obj_level_generate_dungeon.grid_objects[# mouse_x div sizegrid, mouse_y div sizegrid] = instance_create((mouse_x div sizegrid)*32, (mouse_y div sizegrid)*32, placeobject);            
+                
+                if(issnap){
+                    instance_create((mouse_x div sizegrid)*32, (mouse_y div sizegrid)*32, placeobject);
+                }else{
+                    instance_create(mouse_x, mouse_y, placeobject);
+                }
+                
+            }
         }
+    
+        
     }
     
 }else{

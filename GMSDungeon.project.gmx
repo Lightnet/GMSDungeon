@@ -58,6 +58,7 @@
       </sprites>
       <sprite>sprites\spr_player_box</sprite>
       <sprite>sprites\spr_enemy_box</sprite>
+      <sprite>sprites\spr_dungeon_core</sprite>
     </sprites>
     <sprites name="tiles">
       <sprite>sprites\spr_wall</sprite>
@@ -174,6 +175,7 @@
       <script>scripts\scr_generate_dungeon.gml</script>
       <script>scripts\scr_move.gml</script>
       <script>scripts\scr_grid_place_meeting.gml</script>
+      <script>scripts\scr_level_generate_dungeon.gml</script>
     </scripts>
     <script>scripts\scr_get_path_to_player.gml</script>
   </scripts>
@@ -189,9 +191,11 @@
       <object>objects\obj_enemy_slime</object>
       <object>objects\obj_enemy_chinlin</object>
       <object>objects\obj_dungeon_stats</object>
+      <object>objects\obj_dungeon_core</object>
     </objects>
     <objects name="tiles">
       <object>objects\obj_wall</object>
+      <object>objects\obj_wall_ph</object>
       <object>objects\obj_door</object>
       <object>objects\obj_rock</object>
       <object>objects\obj_rock_ph</object>
@@ -264,11 +268,14 @@
       <object>objects\obj_wall_placer</object>
       <object>objects\obj_level</object>
       <object>objects\obj_restart</object>
+      <object>objects\obj_level_generate_dungeon</object>
+      <object>objects\obj_gvar</object>
     </objects>
     <object>objects\obj_player_box</object>
     <object>objects\obj_enemy_box</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_dungeon_level</room>
     <room>rooms\rm_generate_dungoen</room>
     <room>rooms\rm_simple_generate_level</room>
     <room>rooms\rm_dungeon</room>
