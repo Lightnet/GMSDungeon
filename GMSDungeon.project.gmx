@@ -64,6 +64,7 @@
       <sprite>sprites\spr_wall</sprite>
       <sprite>sprites\spr_door</sprite>
       <sprite>sprites\spr_rock</sprite>
+      <sprite>sprites\spr_floor</sprite>
       <sprite>sprites\spr_grass</sprite>
       <sprite>sprites\spr_sand</sprite>
       <sprite>sprites\spr_water</sprite>
@@ -78,6 +79,7 @@
     </sprites>
     <sprites name="objects">
       <sprite>sprites\spr_sign</sprite>
+      <sprite>sprites\spr_box</sprite>
     </sprites>
     <sprites name="weapons">
       <sprite>sprites\spr_sword</sprite>
@@ -96,6 +98,7 @@
       <sprite>sprites\spr_grid_on</sprite>
       <sprite>sprites\spr_grid_off</sprite>
       <sprite>sprites\spr_keyboard_curser</sprite>
+      <sprite>sprites\spr_cursor</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -195,6 +198,7 @@
       <object>objects\obj_place</object>
     </objects>
     <objects name="tiles">
+      <object>objects\obj_detect_ph</object>
       <object>objects\obj_wall</object>
       <object>objects\obj_wall_ph</object>
       <object>objects\obj_door</object>
@@ -208,8 +212,8 @@
       <object>objects\obj_lava_ph</object>
       <object>objects\obj_sand</object>
       <object>objects\obj_sand_ph</object>
-      <object>objects\obj_detect_ph</object>
       <object>objects\obj_floor</object>
+      <object>objects\obj_floor_ph</object>
     </objects>
     <objects name="weapons">
       <object>objects\obj_weapon_animation</object>
@@ -273,6 +277,12 @@
     </objects>
     <object>objects\obj_player_box</object>
     <object>objects\obj_enemy_box</object>
+    <objects name="objects">
+      <object>objects\obj_box</object>
+    </objects>
+    <objects name="systems">
+      <object>objects\obj_cursor</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_dungeon_level</room>

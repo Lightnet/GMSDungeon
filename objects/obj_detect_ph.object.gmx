@@ -50,16 +50,13 @@ event_inherited();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///
-
-if physics_test_overlap(x, y, 0, obj_wall)
-{
-   //alarm[0] = room_speed;
-   //ignited = true;
-   show_debug_message("collision");  
-}else{
-    show_debug_message("no collision");  
-}
+            <string>/// detect collision
+//if physics_test_overlap(x, y, 0, obj_wall)
+//{
+    //show_debug_message("collision");  
+//}else{
+    //show_debug_message("no collision");  
+//}
 </string>
           </argument>
         </arguments>

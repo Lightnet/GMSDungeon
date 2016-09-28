@@ -48,34 +48,38 @@ iscollide = false;
 
 //display name
 slotlist[0] = "Wall";
-slotlist[1] = "Dirt";
-slotlist[2] = "Rock";
-slotlist[3] = "Sand";
-slotlist[4] = "Water";
-slotlist[5] = "Lava";
+slotlist[1] = "Floor";
+slotlist[2] = "Dirt";
+slotlist[3] = "Rock";
+slotlist[4] = "Sand";
+slotlist[5] = "Water";
+slotlist[6] = "Lava";
 
 //display image
 imagesprite[0] = spr_wall;
-imagesprite[1] = spr_dirt;
-imagesprite[2] = spr_rock;
-imagesprite[3] = spr_sand;
-imagesprite[4] = spr_water;
-imagesprite[5] = spr_lava;
+imagesprite[1] = spr_floor;
+imagesprite[2] = spr_dirt;
+imagesprite[3] = spr_rock;
+imagesprite[4] = spr_sand;
+imagesprite[5] = spr_water;
+imagesprite[6] = spr_lava;
 
 // this deal with detect collisions
 placeholder[0] = obj_wall_ph;
-placeholder[1] = obj_dirt_ph;
-placeholder[2] = obj_rock_ph;
-placeholder[3] = obj_sand_ph;
-placeholder[4] = obj_water_ph;
-placeholder[5] = obj_lava_ph;
+placeholder[1] = obj_floor_ph;
+placeholder[2] = obj_dirt_ph;
+placeholder[3] = obj_rock_ph;
+placeholder[4] = obj_sand_ph;
+placeholder[5] = obj_water_ph;
+placeholder[6] = obj_lava_ph;
 // this place the world
 placeblock[0] = obj_wall;
-placeblock[1] = obj_dirt;
-placeblock[2] = obj_rock;
-placeblock[3] = obj_sand;
-placeblock[4] = obj_water;
-placeblock[5] = obj_lava;
+placeblock[1] = obj_floor;
+placeblock[2] = obj_dirt;
+placeblock[3] = obj_rock;
+placeblock[4] = obj_sand;
+placeblock[5] = obj_water;
+placeblock[6] = obj_lava;
 </string>
           </argument>
         </arguments>
@@ -132,7 +136,7 @@ placeblock[5] = obj_lava;
   </events>
   <PhysicsObject>0</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
-  <PhysicsObjectShape>0</PhysicsObjectShape>
+  <PhysicsObjectShape>1</PhysicsObjectShape>
   <PhysicsObjectDensity>0.5</PhysicsObjectDensity>
   <PhysicsObjectRestitution>0.100000001490116</PhysicsObjectRestitution>
   <PhysicsObjectGroup>0</PhysicsObjectGroup>
