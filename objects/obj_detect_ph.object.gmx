@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>-11</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_place</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ishit = false;
+            <string>/// initialize
+event_inherited();
+//ishit = false;
 </string>
           </argument>
         </arguments>

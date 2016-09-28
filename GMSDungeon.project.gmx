@@ -192,6 +192,7 @@
       <object>objects\obj_enemy_chinlin</object>
       <object>objects\obj_dungeon_stats</object>
       <object>objects\obj_dungeon_core</object>
+      <object>objects\obj_place</object>
     </objects>
     <objects name="tiles">
       <object>objects\obj_wall</object>
@@ -199,7 +200,6 @@
       <object>objects\obj_door</object>
       <object>objects\obj_rock</object>
       <object>objects\obj_rock_ph</object>
-      <object>objects\obj_placer</object>
       <object>objects\obj_water</object>
       <object>objects\obj_water_ph</object>
       <object>objects\obj_dirt</object>
