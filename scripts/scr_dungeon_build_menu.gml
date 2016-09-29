@@ -4,6 +4,8 @@ if(isbuild){
     iscollide = false;
     var xx = display_get_gui_width()/2;
     var yy = display_get_gui_height()/2;
+    var screenx = device_mouse_x_to_gui(0);
+    var screeny = device_mouse_y_to_gui(0); 
     draw_text(xx,16,"BUILD MODE");
     var id_name = "none";
         
@@ -20,15 +22,26 @@ if(isbuild){
         }
     }    
     draw_text(xx,32,"Select: "+id_name);
-    
+    draw_set_halign(fa_left);
     //draw text h menu
     for (var i = 0; i < array_length_1d(buildmenu); i++)
     {
-        draw_text(xx+(i*80)-128, 64, string( buildmenu[i] ));
+        draw_text(xx+(i*64)-92-32, 64, string( buildmenu[i] ));
+        if( (xx+(64*i)+(-16)-112 < screenx ) and screenx < (xx+(64*i)+(+28)-112) and ((32)*2) < screeny and screeny < ((32)*3) ){
+            isboundbox = true;
+            if(mouse_check_button(mb_left)){
+                show_debug_message(string(buildmenu[i]));
+                if(buildmenu[i] == "Blocks"){
+                    slotlist = tileblock;
+                }
+                if(buildmenu[i] == "Traps"){
+                    slotlist = traps;
+                }
+            }
+        }
+        
     }
-    
-    var screenx = device_mouse_x_to_gui(0);
-    var screeny = device_mouse_y_to_gui(0); 
+
     //check if icon are bound here min and max
     //if(screeny > (4 + yy -64) and screeny < (5*(32+4) + yy -64)){//size and offsets and items
     //if(screenx > 4 and screenx < (32+4) and screeny > 4 and screeny < (5*(32+4))){//size and offsets
@@ -103,9 +116,7 @@ if(isbuild){
             list_index = array_height_2d(slotlist) - list_max;
         }
     }
-    
-    //show_debug_message(string(array_height_2d(slotlist)));
-    
+    //draw iamge and check if mouse is press left
     for (i = list_index; i < array_height_2d(slotlist); i++){    
         if(list_count >= list_max){
             break;
