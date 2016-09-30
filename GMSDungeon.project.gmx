@@ -99,6 +99,7 @@
       <sprite>sprites\spr_keyboard_curser</sprite>
       <sprite>sprites\spr_cursor</sprite>
       <sprite>sprites\spr_item</sprite>
+      <sprite>sprites\spr_clear_obj</sprite>
     </sprites>
     <sprites name="traps">
       <sprite>sprites\spr_spike</sprite>

@@ -57,7 +57,7 @@ objtype = PLACE;
             <string>//show_debug_message("selected");
 if(instance_exists(obj_build_menu)){
     if(obj_build_menu.isbuild){
-        obj_build_menu.pickid = object_index;
+        obj_build_menu.pickid = id;
     }
 }
 </string>
