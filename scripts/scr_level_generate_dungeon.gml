@@ -12,18 +12,19 @@ if(global.level_generate){
     var width = room_width div CELL_WIDTH;
     var height = room_height div CELL_HEIGHT;
     
-    //create the grid
+    //create the grid FLOOR,WALL,VOID
     grid = ds_grid_create(width, height);
     
-    //create object grid
-    grid_objects = ds_grid_create(width, height);
+    //create object grid instance object
+    grid_tileobjects = ds_grid_create(width, height);
     
     //this place traps grid base
-    grid_objectplaces = ds_grid_create(width, height);
-    ds_grid_set_region(grid_objectplaces, 0, 0, width - 1, height - 1, noone);
-    
-    //place item objects
-    objectplaces = ds_list_create();
+    grid_trapobjects = ds_grid_create(width, height);
+    ds_grid_set_region(grid_trapobjects, 0, 0, width - 1, height - 1, noone);
+    //place item objects place in dungeon
+    dungeonbjects = ds_list_create();    
+    //place item objects loot item
+    itemobjects = ds_list_create();
     //show_debug_message("dasdasdasdasd");
     //ds_list_add(objectplaces,"test");
     //ds_list_add(objectplaces,"tests");
@@ -62,11 +63,11 @@ if(global.level_generate){
         for(var xx = 1;xx < width - 1;xx++){
             if(grid[# xx,yy] == FLOOR){
                 var _floor = instance_create(xx*CELL_WIDTH,yy*CELL_WIDTH, obj_floor);
-                grid_objects[# xx, yy] = _floor;
+                grid_tileobjects[# xx, yy] = _floor;
             }
             if(grid[# xx,yy] == WALL){
                 var _wall = instance_create(xx*CELL_WIDTH,yy*CELL_WIDTH, obj_wall);
-                grid_objects[# xx, yy] = _wall;            
+                grid_tileobjects[# xx, yy] = _wall;            
             }
         }
     }

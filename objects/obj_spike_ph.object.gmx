@@ -3,7 +3,7 @@
   <spriteName>spr_spike</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-11</depth>
+  <depth>-10</depth>
   <persistent>0</persistent>
   <parentName>obj_detect_ph</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,10 +25,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///type change
+            <string>///set object data
 event_inherited();
 name = "Spike";
+isfixed = false;
+issnap = true;
 objtype = TRAP;
+
 </string>
           </argument>
         </arguments>

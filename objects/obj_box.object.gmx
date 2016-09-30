@@ -3,7 +3,7 @@
   <spriteName>spr_box</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-11</depth>
+  <depth>-1</depth>
   <persistent>0</persistent>
   <parentName>obj_wall</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -27,8 +27,10 @@
             <kind>1</kind>
             <string>///set object data
 event_inherited();
-name = "box";
-objtype = VOID;
+name = "Box";
+isfixed = true;
+issnap = false;
+objtype = PLACE;
 
 </string>
           </argument>

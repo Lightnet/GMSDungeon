@@ -3,7 +3,7 @@
   <spriteName>spr_wall</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-10</depth>
+  <depth>0</depth>
   <persistent>0</persistent>
   <parentName>obj_place</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-name = "wall";
+name = "Wall";
 objtype = WALL;
 </string>
           </argument>

@@ -28,8 +28,9 @@
             <string>/// initialize base stats
 name = "none";
 objtype = VOID;//FLOOR, WALL, TRAP, VOID
-isfixed = true;//object off set placement
+isfixed = false;//object off set placement center the cell
 issnap = true;//tile
+iscollision = false;//check place collision so it not place there.
 
 dp_cost = 0;
 dp_sell = 0;

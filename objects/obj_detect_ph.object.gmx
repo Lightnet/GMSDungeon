@@ -51,12 +51,13 @@ event_inherited();
           <argument>
             <kind>1</kind>
             <string>/// detect collision
-//if physics_test_overlap(x, y, 0, obj_wall)
-//{
+if physics_test_overlap(x, y, 0, obj_wall){
+    iscollision = true;
     //show_debug_message("collision");  
-//}else{
+}else{
+    iscollision = false;
     //show_debug_message("no collision");  
-//}
+}
 </string>
           </argument>
         </arguments>

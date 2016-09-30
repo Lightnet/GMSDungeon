@@ -202,6 +202,8 @@
       <object>objects\obj_detect_ph</object>
       <object>objects\obj_wall</object>
       <object>objects\obj_wall_ph</object>
+      <object>objects\obj_floor</object>
+      <object>objects\obj_floor_ph</object>
       <object>objects\obj_rock</object>
       <object>objects\obj_rock_ph</object>
       <object>objects\obj_water</object>
@@ -212,8 +214,6 @@
       <object>objects\obj_lava_ph</object>
       <object>objects\obj_sand</object>
       <object>objects\obj_sand_ph</object>
-      <object>objects\obj_floor</object>
-      <object>objects\obj_floor_ph</object>
     </objects>
     <objects name="weapons">
       <object>objects\obj_weapon_animation</object>
