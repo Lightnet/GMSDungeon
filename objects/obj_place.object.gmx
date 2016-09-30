@@ -29,7 +29,7 @@
 name = "none";
 objtype = VOID;//FLOOR, WALL, VOID
 isfixed = true;//object off set placement
-isnap = true;//tile
+issnap = true;//tile
 
 dp_cost = 0;
 dp_sell = 0;

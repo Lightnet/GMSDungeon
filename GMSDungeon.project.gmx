@@ -80,6 +80,7 @@
     <sprites name="objects">
       <sprite>sprites\spr_sign</sprite>
       <sprite>sprites\spr_box</sprite>
+      <sprite>sprites\spr_box_icon</sprite>
     </sprites>
     <sprites name="weapons">
       <sprite>sprites\spr_sword</sprite>
@@ -88,8 +89,6 @@
     <sprites name="dialogs">
       <sprite>sprites\spr_dialog_box</sprite>
     </sprites>
-    <sprite>sprites\spr_item</sprite>
-    <sprite>sprites\sprite26</sprite>
     <sprites name="ui">
       <sprite>sprites\spr_indicator</sprite>
       <sprite>sprites\spr_slot</sprite>
@@ -99,6 +98,10 @@
       <sprite>sprites\spr_grid_off</sprite>
       <sprite>sprites\spr_keyboard_curser</sprite>
       <sprite>sprites\spr_cursor</sprite>
+      <sprite>sprites\spr_item</sprite>
+    </sprites>
+    <sprites name="traps">
+      <sprite>sprites\spr_spike</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -179,8 +182,8 @@
       <script>scripts\scr_move.gml</script>
       <script>scripts\scr_grid_place_meeting.gml</script>
       <script>scripts\scr_level_generate_dungeon.gml</script>
+      <script>scripts\scr_get_path_to_player.gml</script>
     </scripts>
-    <script>scripts\scr_get_path_to_player.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_text</font>
@@ -195,7 +198,6 @@
       <object>objects\obj_enemy_chinlin</object>
       <object>objects\obj_dungeon_stats</object>
       <object>objects\obj_dungeon_core</object>
-      <object>objects\obj_place</object>
     </objects>
     <objects name="tiles">
       <object>objects\obj_detect_ph</object>
@@ -282,9 +284,14 @@
     </objects>
     <objects name="systems">
       <object>objects\obj_cursor</object>
+      <object>objects\obj_place</object>
     </objects>
     <objects name="buildings">
       <object>objects\obj_door</object>
+    </objects>
+    <objects name="traps">
+      <object>objects\obj_spike</object>
+      <object>objects\obj_spike_ph</object>
     </objects>
   </objects>
   <rooms name="rooms">

@@ -160,7 +160,8 @@ if(isbuild){
     if(instance_exists(selectobject)){
         //selectobject.visible = true;
         //divide and floor and time
-        if(issnap){
+        
+        if(selectobject.issnap){
             selectobject.phy_position_x = (mouse_x div sizegrid)*32;
             selectobject.phy_position_y = (mouse_y div sizegrid)*32;
         }else{
@@ -197,7 +198,7 @@ if(isbuild){
                     //assign grid object
                     //obj_level_generate_dungeon.grid_objects[# mouse_x div sizegrid, mouse_y div sizegrid] = instance_create((mouse_x div sizegrid)*32, (mouse_y div sizegrid)*32, placeobject);            
                     
-                    if(issnap){
+                    if(selectobject.issnap){
                         instance_create((mouse_x div sizegrid)*32, (mouse_y div sizegrid)*32, placeobject);
                     }else{
                         instance_create(mouse_x, mouse_y, placeobject);

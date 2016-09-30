@@ -34,7 +34,6 @@ buildmenu[2] = "Tools";
 buildmenu[3] = "Items";
 buildmenu[4] = "Creaures";
 
-
 isboundbox = false;
 issnap = true;
 sizegrid = 32;
@@ -92,11 +91,15 @@ tileblock[6, 1] = spr_lava;
 tileblock[6, 2] = obj_lava_ph;
 tileblock[6, 3] = obj_lava;
 
-traps[0,0] = "box";
-traps[0,1] = spr_box;
+traps[0,0] = "Box";
+traps[0,1] = spr_box_icon;
 traps[0,2] = obj_box_ph;
 traps[0,3] = obj_box;
 
+traps[1,0] = "Spike";
+traps[1,1] = spr_spike;
+traps[1,2] = obj_spike_ph;
+traps[1,3] = obj_spike;
 
 slotlist = tileblock;
 
