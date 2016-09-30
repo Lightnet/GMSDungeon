@@ -28,8 +28,9 @@
             <string>///set object data
 event_inherited();
 name = "box";
+
 issnap = false;
-objtype = VOID;
+objtype = PLACE;
 
 </string>
           </argument>

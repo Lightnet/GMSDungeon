@@ -3,7 +3,7 @@
   <spriteName>spr_spike</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-5</depth>
+  <depth>-11</depth>
   <persistent>0</persistent>
   <parentName>obj_place</parentName>
   <maskName>&lt;undefined&gt;</maskName>

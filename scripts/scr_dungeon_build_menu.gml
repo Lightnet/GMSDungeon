@@ -189,20 +189,59 @@ if(isbuild){
     if(mouse_check_button_pressed(mb_left) == true and isboundbox = false ){
         if(placeobject !=noone){
             if(instance_exists(obj_level_generate_dungeon)){
-                //check if object exist on the grid
-                if(obj_level_generate_dungeon.grid_objects[# mouse_x div sizegrid,mouse_y div sizegrid] != noone){
-                    var _obj = obj_level_generate_dungeon.grid_objects[# mouse_x div sizegrid,mouse_y div sizegrid];
-                    with(_obj){
-                        instance_destroy();
-                    }
-                    //assign grid object
-                    //obj_level_generate_dungeon.grid_objects[# mouse_x div sizegrid, mouse_y div sizegrid] = instance_create((mouse_x div sizegrid)*32, (mouse_y div sizegrid)*32, placeobject);            
+                var gx = mouse_x div sizegrid;
+                var gy = mouse_y div sizegrid;
+                if(selectobject.objtype == WALL || selectobject.objtype == FLOOR){
+                    //check if object exist on the grid
+                    if(obj_level_generate_dungeon.grid_objects[# gx,gy] != noone){
+                        //check and assign type of dungeon floor or wall
+                        if(selectobject.objtype == WALL){
+                            obj_level_generate_dungeon.grid[# gx,gy] = WALL;
+                        }
+                        if(selectobject.objtype == WALL){
+                            obj_level_generate_dungeon.grid[# gx,gy] = FLOOR;
+                        }
                     
-                    if(selectobject.issnap){
-                        instance_create((mouse_x div sizegrid)*32, (mouse_y div sizegrid)*32, placeobject);
-                    }else{
-                        instance_create(mouse_x, mouse_y, placeobject);
+                        //get array grid and destory instance object
+                        var _obj = obj_level_generate_dungeon.grid_objects[# gx,gy];
+                        with(_obj){
+                            instance_destroy();
+                        }
+                        //assign grid object and create object         
+                        obj_level_generate_dungeon.grid_objects[# gx,gy] = instance_create((gx)*32, (gy)*32, placeobject);
                     }
+                }
+                //check trap grid
+                if(selectobject.objtype == TRAP){
+                    if(obj_level_generate_dungeon.grid_objectplaces[# gx,gy] != noone){
+                        var _obj = obj_level_generate_dungeon.grid_objectplaces[# gx,gy];
+                        with(_obj){
+                            instance_destroy();
+                        }
+                    }
+                    show_debug_message("create traps");
+                    obj_level_generate_dungeon.grid_objectplaces[# gx,gy] = instance_create((gx)*CELL_WIDTH, (gy)*CELL_HEIGHT, placeobject);
+                    //obj_level_generate_dungeon.grid_objectplaces[# gx,gy] = instance_create((gx)*CELL_WIDTH+CELL_WIDTH/2, (gy)*CELL_HEIGHT+CELL_HEIGHT/2, placeobject);
+                }
+                if(selectobject.objtype == PLACE){
+                    var itemplace = noone;
+                    if(selectobject.isfixed){//try to center
+                    show_debug_message("isfixed place item?");
+                         itemplace = instance_create(gx*CELL_WIDTH+CELL_WIDTH/2, gy*CELL_HEIGHT+CELL_HEIGHT/2, placeobject);
+                    }else if(selectobject.issnap){//snap to grid
+                    show_debug_message("snap place item?");
+                         itemplace = instance_create(gx*CELL_WIDTH, gy*CELL_HEIGHT, placeobject);
+                    }else{//place any where that is not grid or fixed
+                         //add list place is not grid
+                         show_debug_message("place item?");
+                         itemplace = instance_create(mouse_x, mouse_y, placeobject);
+                    }
+                    ds_list_add(obj_level_generate_dungeon.objectplaces,itemplace);
+//                    show_debug_message(string(array_length_1d(obj_level_generate_dungeon.objectplaces)));
+                    var len = ds_list_size(obj_level_generate_dungeon.objectplaces);
+                    show_debug_message(string(len));
+
+                    
                 }
             }
         }

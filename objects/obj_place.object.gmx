@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>/// initialize base stats
 name = "none";
-objtype = VOID;//FLOOR, WALL, VOID
+objtype = VOID;//FLOOR, WALL, TRAP, VOID
 isfixed = true;//object off set placement
 issnap = true;//tile
 

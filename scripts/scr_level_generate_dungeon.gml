@@ -18,11 +18,19 @@ if(global.level_generate){
     //create object grid
     grid_objects = ds_grid_create(width, height);
     
-    //create object grid
-    grid_placeobjects = ds_list_create();
+    //this place traps grid base
+    grid_objectplaces = ds_grid_create(width, height);
+    ds_grid_set_region(grid_objectplaces, 0, 0, width - 1, height - 1, noone);
     
-    show_debug_message("Place obj?");
-    show_debug_message(string(grid_placeobjects));
+    //place item objects
+    objectplaces = ds_list_create();
+    //show_debug_message("dasdasdasdasd");
+    //ds_list_add(objectplaces,"test");
+    //ds_list_add(objectplaces,"tests");
+    //show_debug_message(string(array_length_1d(objectplaces)));
+        
+    //show_debug_message("Place obj?");
+    //show_debug_message(string(grid_placeobjects));
     
     //fill the grid with the void
     ds_grid_set_region(grid, 0, 0, width - 1, height - 1, WALL);
@@ -63,3 +71,4 @@ if(global.level_generate){
         }
     }
 }
+
