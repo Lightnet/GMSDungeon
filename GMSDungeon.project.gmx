@@ -119,6 +119,8 @@
       <script>scripts\lines_clear.gml</script>
       <script>scripts\scr_save_game.gml</script>
       <script>scripts\scr_load_game.gml</script>
+      <script>scripts\scr_save_map.gml</script>
+      <script>scripts\scr_load_map.gml</script>
     </scripts>
     <scripts name="script_helper">
       <script>scripts\scr_swap_weapon.gml</script>

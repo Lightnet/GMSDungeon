@@ -1,4 +1,4 @@
-///scr_level_generate_dungeon()
+ ///scr_level_generate_dungeon()
 
 /// initialize dungeon create
 global.level_generate = true;
@@ -71,5 +71,6 @@ if(global.level_generate){
             }
         }
     }
+    //show_debug_message(string(grid));
 }
 
