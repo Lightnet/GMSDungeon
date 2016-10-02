@@ -7,7 +7,75 @@ if (file == -1) exit;
 
 var save_string = file_text_read_string(file);
 file_text_close(file);
+show_debug_message(save_string);
+var save_data = json_decode(save_string);
 
+show_debug_message(save_data[? "name"]);
+show_debug_message(save_data[? "version"]);
+
+//create ds map
+//var obj_data = ds_map_create();
+//show_debug_message( ds_map_size(obj_data));
+//show_debug_message( save_data[? "obj"])
+
+//ds_map_read(obj_data, );
+
+var obj_data = ds_map_create();
+ds_map_read(obj_data, save_data[? "obj"]);
+show_debug_message("size");
+
+
+show_debug_message( string(obj_data[? 1]));
+
+
+var test_ = json_decode(obj_data[? 0])
+show_debug_message( test_[? "y"]);
+
+show_debug_message("ARRAY LIST OBJ:");
+for(var i =0;i < ds_map_size(obj_data);i++){
+//    show_debug_message( string(json_decode(obj_data[? 0])))
+    var test_ = json_decode(obj_data[? i]);
+    show_debug_message( test_[? "y"]);
+}
+
+
+//delete ds map
+ds_map_destroy(obj_data);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//show_debug_message( obj_data[? "x"]);
+//show_debug_message( ds_map_find_value(obj_data,"x"));
+
+//var obj_data = ds_map_create();
+//var obj_ = save_data[? "obj"];
+//ds_grid_read(obj_data,);
+//show_debug_message(obj_data[? "x"]);
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 //save_string = base64_decode(save_string);
 var save_data = json_decode(save_string);
 
@@ -29,6 +97,7 @@ for(var yy = 1;yy < height - 1;yy++){
         }
     }
 }
+*/
 show_debug_message("load map?");
 /*
 var save_room = save_data[? "room"];
