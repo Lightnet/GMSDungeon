@@ -12,6 +12,7 @@ var save_data = json_decode(save_string);
 
 show_debug_message(save_data[? "name"]);
 show_debug_message(save_data[? "version"]);
+show_debug_message(save_data[? "date"]);
 
 //set the grid and height
 var width = room_width div CELL_WIDTH;
@@ -28,46 +29,91 @@ for(var yy = 0; yy < height; yy++){
         }
     }
 }
-
+//===============================================
+// object Tiles
+//===============================================
 var grid_tileobjects = ds_grid_create(width, height);
 ds_grid_read(grid_tileobjects, save_data[? "grid_tileobjects"]);
 
 for(var yy = 0; yy < height; yy++){
     for(var xx = 0; xx < width; xx++){
-        if(grid_tileobjects[# xx, yy] > 0){//make sure it plus else negtive mean noone
-            instance_create(xx*CELL_WIDTH,yy*CELL_HEIGHT,grid_tileobjects[# xx, yy]);
-            show_debug_message("create");
-        }
+        //if(grid_tileobjects[# xx, yy] > 0){//make sure it plus else negtive mean noone
+            var _obj = json_decode(grid_tileobjects[# xx, yy]);
+            if(_obj[? "object_index"] > 0){//check if object index is not negtive
+                instance_create(xx*CELL_WIDTH,yy*CELL_HEIGHT,_obj[? "object_index"]);
+                //show_debug_message(string(_obj[? "object_index"]));
+            }
+            //show_debug_message("create");
+        //}
     }
 }
 ds_grid_destroy(grid_tileobjects);
+//===============================================
+//object Traps
+//===============================================
+var grid_trapobjects = ds_grid_create(width, height);
+ds_grid_read(grid_trapobjects, save_data[? "grid_trapobjects"]);
 
-
-
-//tile object
-/*
-var grid_tileobjects = ds_map_create();
-ds_map_read(grid_tileobjects,save_data[? "grid_tileobjects"]);
-for(var i = 0; i < ds_map_size(grid_tileobjects); i++){
-    var obj_l = json_decode(grid_tileobjects[? i]);
-    show_debug_message(  string(obj_l[? "x"]) + ":" + string(obj_l[? "y"]));
-    instance_create(obj_l[? "x"],obj_l[? "y"],obj_l[? "object_index"]);
-}
-*/
-
-
-//for(var yy = 0; yy < height; yy++){
-    //for(var xx = 0; xx < width; xx++){
-        //show_debug_message(string(grid[# xx, yy]));
-        //show_debug_message(string(grid[# xx, yy].x));
-        //var obj_l = grid_tileobjects[]
-        //show_debug_message(string( grid_tileobjects[# xx, yy].x) + ":" +string( grid[# xx, yy].y));
-        //instance_create(grid[# xx, yy].x,grid[# xx, yy].y,grid[# xx, yy].object_index);
-        //if(grid[# xx, yy] == FLOOR){
-            //show_debug_message("found floor!");        
+for(var yy = 0; yy < height; yy++){
+    for(var xx = 0; xx < width; xx++){
+        //if(grid_tileobjects[# xx, yy] > 0){//make sure it plus else negtive mean noone
+            var _obj = json_decode(grid_trapobjects[# xx, yy]);
+            if(_obj[? "object_index"] > 0){//check if object index is not negtive
+                //
+                instance_create(xx*CELL_WIDTH,yy*CELL_HEIGHT,_obj[? "object_index"]);
+                show_debug_message(string(_obj[? "object_index"]));
+            }
+            _obj = noone;
+            //show_debug_message("create");
         //}
-    //}
-//}
+    }
+}
+ds_grid_destroy(grid_trapobjects);
+
+//===============================================
+//object creatures
+//===============================================
+
+
+var obj_dungeons = ds_map_create();
+ds_map_read(obj_dungeons, save_data[? "dungeonobjects"]);
+//show_debug_message("dungeon objects"+string(ds_map_size(obj_dungeons)));
+for(var i = 0; i < ds_map_size(obj_dungeons); i++){
+    show_debug_message(string(obj_dungeons[? i]));
+    var _obj_d = json_decode(obj_dungeons[? i]);
+    show_debug_message( string(_obj_d[? "object_index"]));
+    instance_create(_obj_d[? "x"],_obj_d[? "y"],_obj_d[? "object_index"]);
+}
+
+ds_map_destroy(obj_dungeons);
+
+show_debug_message("end dungeon objects");
+
+
+
+
+
+//===============================================
+//object creatures
+//===============================================
+
+var obj_creatures = ds_map_create();
+ds_map_read(obj_creatures, save_data[? "obj_creatures"]);
+show_debug_message(string(ds_map_size(obj_creatures)));
+for(var i = 0; i < ds_map_size(obj_creatures);i++){
+    var _creature = json_decode(obj_creatures[? i]);
+    instance_create(_creature[? "x"],_creature[? "y"],_creature[? "object_index"]);
+    show_debug_message("entitly creature");
+}
+
+
+
+
+
+
+
+
+
 
 
 /*
@@ -86,16 +132,6 @@ for(var i =0;i < ds_map_size(obj_data);i++){
 //delete ds map
 ds_map_destroy(obj_data);
 */
-
-
-
-//show_debug_message( obj_data[? "x"]);
-//show_debug_message( ds_map_find_value(obj_data,"x"));
-
-//var obj_data = ds_map_create();
-//var obj_ = save_data[? "obj"];
-//ds_grid_read(obj_data,);
-//show_debug_message(obj_data[? "x"]);
 
 
 

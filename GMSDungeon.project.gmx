@@ -296,9 +296,11 @@
       <object>objects\obj_spike</object>
       <object>objects\obj_spike_ph</object>
     </objects>
+    <object>objects\obj_ds</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_dungeon_level</room>
+    <room>rooms\rm_ds</room>
     <room>rooms\rm_generate_dungoen</room>
     <room>rooms\rm_simple_generate_level</room>
     <room>rooms\rm_dungeon</room>
