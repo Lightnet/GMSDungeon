@@ -71,23 +71,37 @@ for(var yy = 0; yy < height; yy++){
 ds_grid_destroy(grid_trapobjects);
 
 //===============================================
-//object creatures
+//object dungeon map
 //===============================================
-
-
+/*
 var obj_dungeons = ds_map_create();
 ds_map_read(obj_dungeons, save_data[? "dungeonobjects"]);
 //show_debug_message("dungeon objects"+string(ds_map_size(obj_dungeons)));
 for(var i = 0; i < ds_map_size(obj_dungeons); i++){
-    show_debug_message(string(obj_dungeons[? i]));
+    //show_debug_message(string(obj_dungeons[? i]));
     var _obj_d = json_decode(obj_dungeons[? i]);
-    show_debug_message( string(_obj_d[? "object_index"]));
+    //show_debug_message( string(_obj_d[? "object_index"]));
     instance_create(_obj_d[? "x"],_obj_d[? "y"],_obj_d[? "object_index"]);
 }
-
 ds_map_destroy(obj_dungeons);
+*/
+//show_debug_message("end dungeon objects");
 
-show_debug_message("end dungeon objects");
+//===============================================
+//dungeon objects list
+//===============================================
+var _dungeon_objects = ds_list_create();
+ds_list_read(_dungeon_objects, save_data[? "dungeon_objects"]);
+show_debug_message("LEN:"+string(ds_list_size(_dungeon_objects)));
+for(var i = 0; i < ds_list_size(_dungeon_objects);i++){
+    var val = ds_list_find_value(_dungeon_objects,i);
+    var _obj = json_decode(val);
+    //show_debug_message(val);
+    //show_debug_message(_obj[? "x"]);
+    instance_create(_obj[? "x"],_obj[? "y"],_obj[? "object_index"]);
+}
+
+
 
 
 

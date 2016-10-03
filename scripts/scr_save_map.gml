@@ -9,7 +9,6 @@ save_data[? "version"] = "0.1";
 save_data[? "date"] = string(current_day) + "/" + string (current_month) + "/" + string(current_year);
 
 
-
 //set the grid and height
 var width = room_width div CELL_WIDTH;
 var height = room_height div CELL_HEIGHT;
@@ -68,11 +67,10 @@ with(obj_level_generate_dungeon){
     save_data[? "grid_trapobjects"] = ds_grid_write(obj_traps);
     ds_grid_destroy(obj_traps);
     //===============================================
-    //save_data[? "dungeonbjects"] = ds_grid_write(dungeonbjects);
+    // object dungeons map
     //===============================================
-    
+    /*
     var obj_dungeons = ds_map_create();
-    
     var count = 0;
     for(var i = 0; i < ds_list_size(dungeonbjects); i++){
         var val = ds_list_find_value(dungeonbjects, i);
@@ -86,12 +84,27 @@ with(obj_level_generate_dungeon){
         //ds_map_add(obj_dungeons,json_encode(objt));
         //count++;
     }
-    
     show_debug_message("dungeon objects"+string(ds_map_size(obj_dungeons)));
-    
     save_data[? "dungeonobjects"] = ds_map_write(obj_dungeons);
     ds_map_destroy(obj_dungeons);
+    */
     //save_data[? "itemobjects"] = ds_grid_write(itemobjects);
+    //===============================================
+    // dungeon objects list
+    //===============================================
+    var _dungeon_objects = ds_list_create();
+    for(var i = 0; i < ds_list_size(dungeonbjects); i++){
+        var val = ds_list_find_value(dungeonbjects, i);
+        var objt = ds_map_create();
+        objt[? "object_index"] = val.object_index;
+        objt[? "x"] = val.x;
+        objt[? "y"] = val.y;
+        ds_list_add(_dungeon_objects,json_encode(objt));
+    }
+    show_debug_message("dungeon objects"+string(ds_list_size(_dungeon_objects)));
+    save_data[? "dungeon_objects"] = ds_list_write(_dungeon_objects);
+    ds_list_destroy(_dungeon_objects);
+    
 }
 
 //===============================================
