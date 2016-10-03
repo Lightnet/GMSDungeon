@@ -29,9 +29,23 @@ for(var yy = 0; yy < height; yy++){
     }
 }
 
+var grid_tileobjects = ds_grid_create(width, height);
+ds_grid_read(grid_tileobjects, save_data[? "grid_tileobjects"]);
+
+for(var yy = 0; yy < height; yy++){
+    for(var xx = 0; xx < width; xx++){
+        if(grid_tileobjects[# xx, yy] > 0){//make sure it plus else negtive mean noone
+            instance_create(xx*CELL_WIDTH,yy*CELL_HEIGHT,grid_tileobjects[# xx, yy]);
+            show_debug_message("create");
+        }
+    }
+}
+ds_grid_destroy(grid_tileobjects);
+
 
 
 //tile object
+/*
 var grid_tileobjects = ds_map_create();
 ds_map_read(grid_tileobjects,save_data[? "grid_tileobjects"]);
 for(var i = 0; i < ds_map_size(grid_tileobjects); i++){
@@ -39,9 +53,7 @@ for(var i = 0; i < ds_map_size(grid_tileobjects); i++){
     show_debug_message(  string(obj_l[? "x"]) + ":" + string(obj_l[? "y"]));
     instance_create(obj_l[? "x"],obj_l[? "y"],obj_l[? "object_index"]);
 }
-
-
-
+*/
 
 
 //for(var yy = 0; yy < height; yy++){
@@ -77,17 +89,6 @@ ds_map_destroy(obj_data);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 //show_debug_message( obj_data[? "x"]);
 //show_debug_message( ds_map_find_value(obj_data,"x"));
 
@@ -95,15 +96,6 @@ ds_map_destroy(obj_data);
 //var obj_ = save_data[? "obj"];
 //ds_grid_read(obj_data,);
 //show_debug_message(obj_data[? "x"]);
-
-
-
-
-
-
-
-
-
 
 
 

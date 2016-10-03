@@ -18,13 +18,37 @@ with(obj_level_generate_dungeon){
     save_data[? "grid"] = ds_grid_write(grid);
     //save_data[? "grid_tileobjects"] = ds_grid_write(grid_tileobjects);
     
+    //var objlist = ds_map_create();
+    //var count = 0;
+    var tiles = ds_grid_create(width, height);
+    
+    for(var yy = 0; yy < height; yy++){
+        for(var xx = 0; xx < width; xx++){
+            if(grid_tileobjects[# xx, yy]){
+                //var objt = ds_map_create();
+                //var _obj = grid_tileobjects[# xx, yy];
+                //objt[? "object_index"] = _obj.object_index;
+                //objt[? "x"] = _obj.x;
+                //objt[? "y"] = _obj.y;
+                //objlist[? count] = json_encode(objt);
+                //count++;
+                tiles[# xx, yy] = grid_tileobjects[# xx, yy].object_index;
+            }
+        }
+    }
+    save_data[? "grid_tileobjects"] = ds_grid_write(tiles);
+    ds_grid_destroy(tiles);    
+//    ds_map_destroy(tiles);
+    
+    //save_data[? "grid_trapobjects"] = ds_grid_write(grid_trapobjects);
+    /*
     var objlist = ds_map_create();
     var count = 0;
     for(var yy = 0; yy < height; yy++){
         for(var xx = 0; xx < width; xx++){
             if(grid_tileobjects[# xx, yy]){
                 var objt = ds_map_create();
-                var _obj = grid_tileobjects[# xx, yy];
+                var _obj = grid_trapobjects[# xx, yy];
                 objt[? "object_index"] = _obj.object_index;
                 objt[? "x"] = _obj.x;
                 objt[? "y"] = _obj.y;
@@ -33,17 +57,30 @@ with(obj_level_generate_dungeon){
             }
         }
     }
-
-    save_data[? "grid_tileobjects"] = ds_map_write(objlist);
-    
-    
-    
-    
-    
-    
-    
-    //save_data[? "grid_trapobjects"] = ds_grid_write(grid_trapobjects);
+    save_data[? "grid_trapobjects"] = ds_map_write(objlist);
+    ds_map_destroy(objlist);
+    */
     //save_data[? "dungeonbjects"] = ds_grid_write(dungeonbjects);
+    
+    //var objlist = ds_map_create();
+    /*
+    var count = 0;
+    for(var yy = 0; yy < height; yy++){
+        for(var xx = 0; xx < width; xx++){
+            if(grid_tileobjects[# xx, yy]){
+                var objt = ds_map_create();
+                var _obj = grid_trapobjects[# xx, yy];
+                objt[? "object_index"] = _obj.object_index;
+                objt[? "x"] = _obj.x;
+                objt[? "y"] = _obj.y;
+                objlist[? count] = json_encode(objt);
+                count++;
+            }
+        }
+    }
+    save_data[? "grid_trapobjects"] = ds_map_write(objlist);
+    */
+    //ds_map_destroy(objlist);
     //save_data[? "itemobjects"] = ds_grid_write(itemobjects);
 }
 

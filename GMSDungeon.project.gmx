@@ -185,6 +185,7 @@
       <script>scripts\scr_grid_place_meeting.gml</script>
       <script>scripts\scr_level_generate_dungeon.gml</script>
       <script>scripts\scr_get_path_to_player.gml</script>
+      <script>scripts\scr_dungeon_object_clear.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
