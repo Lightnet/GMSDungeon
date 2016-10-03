@@ -7,41 +7,73 @@ if (file == -1) exit;
 
 var save_string = file_text_read_string(file);
 file_text_close(file);
-show_debug_message(save_string);
+//show_debug_message(save_string);
 var save_data = json_decode(save_string);
 
 show_debug_message(save_data[? "name"]);
 show_debug_message(save_data[? "version"]);
 
-//create ds map
-//var obj_data = ds_map_create();
-//show_debug_message( ds_map_size(obj_data));
-//show_debug_message( save_data[? "obj"])
+//set the grid and height
+var width = room_width div CELL_WIDTH;
+var height = room_height div CELL_HEIGHT;
 
-//ds_map_read(obj_data, );
+//FLOOR and WALL
+var grid = ds_grid_create(width,height);
+ds_grid_read(grid,save_data[? "grid"]);
 
+for(var yy = 0; yy < height; yy++){
+    for(var xx = 0; xx < width; xx++){
+        if(grid[# xx, yy] == FLOOR){
+            //show_debug_message("found floor!");        
+        }
+    }
+}
+
+
+
+//tile object
+var grid_tileobjects = ds_map_create();
+ds_map_read(grid_tileobjects,save_data[? "grid_tileobjects"]);
+for(var i = 0; i < ds_map_size(grid_tileobjects); i++){
+    var obj_l = json_decode(grid_tileobjects[? i]);
+    show_debug_message(  string(obj_l[? "x"]) + ":" + string(obj_l[? "y"]));
+    instance_create(obj_l[? "x"],obj_l[? "y"],obj_l[? "object_index"]);
+}
+
+
+
+
+
+//for(var yy = 0; yy < height; yy++){
+    //for(var xx = 0; xx < width; xx++){
+        //show_debug_message(string(grid[# xx, yy]));
+        //show_debug_message(string(grid[# xx, yy].x));
+        //var obj_l = grid_tileobjects[]
+        //show_debug_message(string( grid_tileobjects[# xx, yy].x) + ":" +string( grid[# xx, yy].y));
+        //instance_create(grid[# xx, yy].x,grid[# xx, yy].y,grid[# xx, yy].object_index);
+        //if(grid[# xx, yy] == FLOOR){
+            //show_debug_message("found floor!");        
+        //}
+    //}
+//}
+
+
+/*
 var obj_data = ds_map_create();
 ds_map_read(obj_data, save_data[? "obj"]);
 show_debug_message("size");
-
-
 show_debug_message( string(obj_data[? 1]));
-
-
 var test_ = json_decode(obj_data[? 0])
 show_debug_message( test_[? "y"]);
-
 show_debug_message("ARRAY LIST OBJ:");
 for(var i =0;i < ds_map_size(obj_data);i++){
 //    show_debug_message( string(json_decode(obj_data[? 0])))
     var test_ = json_decode(obj_data[? i]);
     show_debug_message( test_[? "y"]);
 }
-
-
 //delete ds map
 ds_map_destroy(obj_data);
-
+*/
 
 
 
