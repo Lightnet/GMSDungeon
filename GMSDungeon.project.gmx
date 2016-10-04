@@ -277,6 +277,7 @@
       <object>objects\obj_level</object>
       <object>objects\obj_restart</object>
       <object>objects\obj_level_generate_dungeon</object>
+      <object>objects\obj_save_load</object>
       <object>objects\obj_gvar</object>
     </objects>
     <object>objects\obj_player_box</object>

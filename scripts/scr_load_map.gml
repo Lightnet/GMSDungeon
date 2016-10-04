@@ -5,9 +5,32 @@ show_debug_message("check load map?");
 //show_debug_message(string(file));
 if (file == -1) exit;
 
+
+//scr_dungeon_object_clear();
+
+//with(obj_level_generate_dungeon){
+    //reset list, grid and map
+    ds_grid_destroy(obj_level_generate_dungeon.grid);
+    ds_grid_destroy(obj_level_generate_dungeon.grid_tileobjects);
+    ds_grid_destroy(obj_level_generate_dungeon.grid_trapobjects);
+    
+    ds_list_destroy(obj_level_generate_dungeon.dungeonbjects);
+    ds_list_destroy(obj_level_generate_dungeon.itemobjects);
+    
+    var width = room_width div CELL_WIDTH;
+    var height = room_height div CELL_HEIGHT;
+    obj_level_generate_dungeon.grid = ds_grid_create(width, height);
+    obj_level_generate_dungeon.grid_tileobjects = ds_grid_create(width, height);
+    obj_level_generate_dungeon.grid_trapobjects = ds_grid_create(width, height);
+    ds_grid_set_region(obj_level_generate_dungeon.grid_trapobjects, 0, 0, width - 1, height - 1, noone);
+    obj_level_generate_dungeon.dungeonbjects = ds_list_create();
+    obj_level_generate_dungeon.itemobjects = ds_list_create();
+//}
+
 var save_string = file_text_read_string(file);
 file_text_close(file);
 //show_debug_message(save_string);
+//save_string = base64_decode(save_string);
 var save_data = json_decode(save_string);
 
 show_debug_message(save_data[? "name"]);
@@ -24,11 +47,14 @@ ds_grid_read(grid,save_data[? "grid"]);
 
 for(var yy = 0; yy < height; yy++){
     for(var xx = 0; xx < width; xx++){
-        if(grid[# xx, yy] == FLOOR){
+        //if(grid[# xx, yy] == FLOOR){
             //show_debug_message("found floor!");        
-        }
+        //}
     }
 }
+obj_level_generate_dungeon.grid = grid;
+//ds_grid_destroy(grid);
+
 //===============================================
 // object Tiles
 //===============================================
@@ -40,14 +66,16 @@ for(var yy = 0; yy < height; yy++){
         //if(grid_tileobjects[# xx, yy] > 0){//make sure it plus else negtive mean noone
             var _obj = json_decode(grid_tileobjects[# xx, yy]);
             if(_obj[? "object_index"] > 0){//check if object index is not negtive
-                instance_create(xx*CELL_WIDTH,yy*CELL_HEIGHT,_obj[? "object_index"]);
+                var _intant_obj = instance_create(xx*CELL_WIDTH,yy*CELL_HEIGHT,_obj[? "object_index"]);
                 //show_debug_message(string(_obj[? "object_index"]));
+                obj_level_generate_dungeon.grid_tileobjects[# xx,yy] = _intant_obj;
             }
             //show_debug_message("create");
         //}
     }
 }
 ds_grid_destroy(grid_tileobjects);
+
 //===============================================
 //object Traps
 //===============================================
@@ -60,8 +88,9 @@ for(var yy = 0; yy < height; yy++){
             var _obj = json_decode(grid_trapobjects[# xx, yy]);
             if(_obj[? "object_index"] > 0){//check if object index is not negtive
                 //
-                instance_create(xx*CELL_WIDTH,yy*CELL_HEIGHT,_obj[? "object_index"]);
-                show_debug_message(string(_obj[? "object_index"]));
+                var _instant_obj = instance_create(xx*CELL_WIDTH,yy*CELL_HEIGHT,_obj[? "object_index"]);
+                obj_level_generate_dungeon.grid_tileobjects[# xx,yy] = _instant_obj;
+                //show_debug_message(string(_obj[? "object_index"]));
             }
             _obj = noone;
             //show_debug_message("create");
@@ -98,11 +127,25 @@ for(var i = 0; i < ds_list_size(_dungeon_objects);i++){
     var _obj = json_decode(val);
     //show_debug_message(val);
     //show_debug_message(_obj[? "x"]);
-    instance_create(_obj[? "x"],_obj[? "y"],_obj[? "object_index"]);
+    var _instant_obj = instance_create(_obj[? "x"],_obj[? "y"],_obj[? "object_index"]);
+    ds_list_add(obj_level_generate_dungeon.dungeonbjects,_instant_obj);
 }
 
-
-
+//===============================================
+//item objects list
+//===============================================
+var _item_objects = ds_list_create();
+ds_list_read(_item_objects, save_data[? "item_objects"]);
+//show_debug_message("LEN:"+string(ds_list_size(_item_objects)));
+for(var i = 0; i < ds_list_size(_item_objects);i++){
+    var val = ds_list_find_value(_item_objects,i);
+    var _obj = json_decode(val);
+    //show_debug_message(val);
+    //show_debug_message(_obj[? "x"]);
+    var _instant_obj = instance_create(_obj[? "x"],_obj[? "y"],_obj[? "object_index"]);
+    ds_list_add(obj_level_generate_dungeon.itemobjects,_instant_obj,_instant_obj);    
+}
+ds_list_destroy(_item_objects);
 
 
 
@@ -119,15 +162,7 @@ for(var i = 0; i < ds_map_size(obj_creatures);i++){
     instance_create(_creature[? "x"],_creature[? "y"],_creature[? "object_index"]);
     show_debug_message("entitly creature");
 }
-
-
-
-
-
-
-
-
-
+ds_map_destroy(obj_creatures);
 
 
 /*
@@ -173,33 +208,4 @@ for(var yy = 1;yy < height - 1;yy++){
 }
 */
 show_debug_message("load map?");
-/*
-var save_room = save_data[? "room"];
-if(room != save_room){
-    room_goto(save_room);
-}
-*/
-
-/*
-with (obj_player_stats){
-    player_xstart = save_data[? "x"];
-    player_ystart = save_data[? "y"];
-    if(instance_exists(obj_player)){
-        obj_player.x = player_xstart;
-        obj_player.y = player_ystart;
-        obj_player.phy_position_x = player_xstart;
-        obj_player.phy_position_y = player_ystart;        
-    } else {
-        instance_create(player_xstart,player_ystart, obj_player);
-        hp = save_data[? "hp"];
-        maxhp = save_data[? "maxhp"];
-        stamina = save_data[? "stamina"];
-        maxstamina = save_data[? "maxstamina"];
-        expr = save_data[? "expr"];
-        maxexpr = save_data[? "maxexpr"];
-        level = save_data[? "level"];
-        attack = save_data[? "attack"];
-    }
-}
-*/
 ds_map_destroy(save_data);
