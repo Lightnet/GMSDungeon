@@ -2,7 +2,6 @@
 
 if(!instance_exists(obj_level_generate_dungeon)) exit;
 
-
 //create save data structure
 var save_data = ds_map_create();
 save_data[? "name"] = "none";
@@ -101,6 +100,7 @@ with(obj_level_generate_dungeon){
         objt[? "x"] = val.x;
         objt[? "y"] = val.y;
         ds_list_add(_dungeon_objects,json_encode(objt));
+        ds_map_destroy(objt);
     }
     //show_debug_message("dungeon objects"+string(ds_list_size(_dungeon_objects)));
     save_data[? "dungeon_objects"] = ds_list_write(_dungeon_objects);
@@ -117,6 +117,7 @@ with(obj_level_generate_dungeon){
         objt[? "x"] = val.x;
         objt[? "y"] = val.y;
         ds_list_add(_item_objects,json_encode(objt));
+        ds_map_destroy(objt);
     }
     //show_debug_message("dungeon objects"+string(ds_list_size(_dungeon_objects)));
     save_data[? "item_objects"] = ds_list_write(_item_objects);
@@ -137,13 +138,13 @@ with(obj_lifeform_parent){
     objt[? "x"] = x;
     objt[? "y"] = y;
     obj_creatures[? count] = json_encode(objt);
-    
+    ds_map_destroy(objt);
     count++;
 }
 save_data[? "obj_creatures"] = ds_map_write(obj_creatures);
 ds_map_destroy(obj_creatures);
 
-save_data[? "line"] = "line";
+//save_data[? "line"] = "line";//testing where the file line end
 
 
 

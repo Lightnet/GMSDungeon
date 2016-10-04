@@ -130,6 +130,7 @@ for(var i = 0; i < ds_list_size(_dungeon_objects);i++){
     var _instant_obj = instance_create(_obj[? "x"],_obj[? "y"],_obj[? "object_index"]);
     ds_list_add(obj_level_generate_dungeon.dungeonbjects,_instant_obj);
 }
+ds_list_destroy(_dungeon_objects);
 
 //===============================================
 //item objects list
@@ -147,9 +148,6 @@ for(var i = 0; i < ds_list_size(_item_objects);i++){
 }
 ds_list_destroy(_item_objects);
 
-
-
-
 //===============================================
 //object creatures
 //===============================================
@@ -158,9 +156,12 @@ var obj_creatures = ds_map_create();
 ds_map_read(obj_creatures, save_data[? "obj_creatures"]);
 show_debug_message(string(ds_map_size(obj_creatures)));
 for(var i = 0; i < ds_map_size(obj_creatures);i++){
+    // decode 
     var _creature = json_decode(obj_creatures[? i]);
+    // create 
     instance_create(_creature[? "x"],_creature[? "y"],_creature[? "object_index"]);
-    show_debug_message("entitly creature");
+    
+    //show_debug_message("entitly creature");
 }
 ds_map_destroy(obj_creatures);
 
