@@ -54,7 +54,7 @@ with(obj_level_generate_dungeon){
                 //objt[? "y"] = _obj.y;
                 obj_traps[# xx, yy] = json_encode(objt);
                 ds_map_destroy(objt);
-                show_debug_message("found trap!");
+                //show_debug_message("found trap!");
             }else{
                 var objt2 = ds_map_create();
                 objt2[? "object_index"] = -1;
@@ -131,8 +131,7 @@ with(obj_level_generate_dungeon){
 var obj_creatures = ds_map_create();
 var count = 0;
 with(obj_lifeform_parent){
-    show_debug_message("obj_creatures"+string(count));
-    
+    //show_debug_message("obj_creatures"+string(count));
     var objt = ds_map_create();
     objt[? "object_index"] = object_index;
     objt[? "x"] = x;
@@ -189,6 +188,5 @@ save_string = base64_encode(save_string);
 var file = file_text_open_write(working_directory + "tilemap.txt");
 file_text_write_string(file, save_string);
 file_text_close(file);
-
 
 show_debug_message("save map!");

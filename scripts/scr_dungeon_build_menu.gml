@@ -18,7 +18,7 @@ if(isbuild){
                 instance_destroy();
             }
             pickid = -1;
-            show_debug_message("delete object");
+            //show_debug_message("delete object");
         }
     }    
     draw_text(xx,32,"Select: "+id_name);
@@ -30,7 +30,7 @@ if(isbuild){
         if( (xx+(64*i)+(-16)-112 < screenx ) and screenx < (xx+(64*i)+(+28)-112) and ((32)*2) < screeny and screeny < ((32)*3) ){
             isboundbox = true;
             if(mouse_check_button(mb_left)){
-                show_debug_message(string(buildmenu[i]));
+                //show_debug_message(string(buildmenu[i]));
                 if(buildmenu[i] == "Blocks"){
                     slotlist = tileblock;
                 }
@@ -255,7 +255,7 @@ if(isbuild){
                     //need to change the code once figure out the design
                     if(selectobject.objtype == PLACE){
                         if(selectobject.iscollision){
-                            show_debug_message("There is collision!");
+                            //show_debug_message("There is collision!");
                         }else{
                             var itemplace = noone;
                             if(selectobject.isfixed){//try to center

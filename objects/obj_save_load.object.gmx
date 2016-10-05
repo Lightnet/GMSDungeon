@@ -112,7 +112,7 @@ fade = 1;
           <argument>
             <kind>1</kind>
             <string>///set transparent to 0 loading screen
-show_debug_message("LOADING?");
+//show_debug_message("LOADING?");
 obj_save_load.a = 0;
 </string>
           </argument>
@@ -197,7 +197,7 @@ obj_save_load.a = 0;
           <argument>
             <kind>1</kind>
             <string>///set transparent to 0 loading screen
-show_debug_message("LOADING?");
+//show_debug_message("LOADING?");
 obj_save_load.a = 0;
 </string>
           </argument>

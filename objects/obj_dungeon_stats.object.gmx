@@ -50,6 +50,21 @@ dungeon_mode = scr_dungeon_survival_state;
 
 toggle_camera = false;
 
+//rpg element
+//this deal with the saving data I think?
+creatures = ds_list_create();//current creatures? friend and foes for invade?
+adventures = ds_list_create();//store that enter and leaves
+
+//current map
+current_town = "";
+current_town_x = 0;
+current_town_y = 0;
+current_world = "";
+current_world_x = 0;
+current_world_y = 0;
+
+
+
 //wave control variables
 creature_count = 0;
 creature_deathcount = 0;

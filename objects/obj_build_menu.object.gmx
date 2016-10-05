@@ -101,6 +101,13 @@ traps[1,1] = spr_spike;
 traps[1,2] = obj_spike_ph;
 traps[1,3] = obj_spike;
 
+traps[2,0] = "Door Exit";
+traps[2,1] = spr_door_exit;
+traps[2,2] = obj_dungeon_door_exit_ph;
+traps[2,3] = obj_dungeon_door_exit;
+
+
+
 slotlist = tileblock;
 
 //show_debug_message("object_get_name");

@@ -81,6 +81,7 @@
       <sprite>sprites\spr_sign</sprite>
       <sprite>sprites\spr_box</sprite>
       <sprite>sprites\spr_box_icon</sprite>
+      <sprite>sprites\spr_door_exit</sprite>
     </sprites>
     <sprites name="weapons">
       <sprite>sprites\spr_sword</sprite>
@@ -194,12 +195,12 @@
   </fonts>
   <objects name="objects">
     <objects name="creatures">
+      <object>objects\obj_player_box</object>
+      <object>objects\obj_enemy_box</object>
       <object>objects\obj_lifeform_parent</object>
       <object>objects\obj_player</object>
-      <object>objects\obj_player_stats</object>
       <object>objects\obj_enemy_slime</object>
       <object>objects\obj_enemy_chinlin</object>
-      <object>objects\obj_dungeon_stats</object>
       <object>objects\obj_dungeon_core</object>
     </objects>
     <objects name="tiles">
@@ -275,13 +276,17 @@
       <object>objects\obj_floor_hander</object>
       <object>objects\obj_wall_placer</object>
       <object>objects\obj_level</object>
-      <object>objects\obj_restart</object>
       <object>objects\obj_level_generate_dungeon</object>
+      <object>objects\obj_level_world</object>
+      <object>objects\obj_level_town</object>
+      <object>objects\obj_level_adventurer</object>
+      <object>objects\obj_explore</object>
+      <object>objects\obj_restart</object>
       <object>objects\obj_save_load</object>
       <object>objects\obj_gvar</object>
+      <object>objects\obj_dungeon_stats</object>
+      <object>objects\obj_player_stats</object>
     </objects>
-    <object>objects\obj_player_box</object>
-    <object>objects\obj_enemy_box</object>
     <objects name="objects">
       <object>objects\obj_box</object>
       <object>objects\obj_box_ph</object>
@@ -289,10 +294,13 @@
     <objects name="systems">
       <object>objects\obj_cursor</object>
       <object>objects\obj_place</object>
+      <object>objects\obj_ds</object>
     </objects>
     <objects name="buildings">
       <object>objects\obj_door</object>
       <object>objects\obj_dungeon_door</object>
+      <object>objects\obj_dungeon_door_exit</object>
+      <object>objects\obj_dungeon_door_exit_ph</object>
     </objects>
     <objects name="traps">
       <object>objects\obj_spike</object>
@@ -310,7 +318,6 @@
       <object>objects\obj_trap_warp</object>
       <object>objects\obj_spike_ph</object>
     </objects>
-    <object>objects\obj_ds</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_dungeon_level</room>

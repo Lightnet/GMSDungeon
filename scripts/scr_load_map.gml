@@ -121,7 +121,7 @@ ds_map_destroy(obj_dungeons);
 //===============================================
 var _dungeon_objects = ds_list_create();
 ds_list_read(_dungeon_objects, save_data[? "dungeon_objects"]);
-show_debug_message("LEN:"+string(ds_list_size(_dungeon_objects)));
+//show_debug_message("LEN:"+string(ds_list_size(_dungeon_objects)));
 for(var i = 0; i < ds_list_size(_dungeon_objects);i++){
     var val = ds_list_find_value(_dungeon_objects,i);
     var _obj = json_decode(val);
@@ -154,13 +154,12 @@ ds_list_destroy(_item_objects);
 
 var obj_creatures = ds_map_create();
 ds_map_read(obj_creatures, save_data[? "obj_creatures"]);
-show_debug_message(string(ds_map_size(obj_creatures)));
+//show_debug_message(string(ds_map_size(obj_creatures)));
 for(var i = 0; i < ds_map_size(obj_creatures);i++){
     // decode 
     var _creature = json_decode(obj_creatures[? i]);
     // create 
-    instance_create(_creature[? "x"],_creature[? "y"],_creature[? "object_index"]);
-    
+    instance_create(_creature[? "x"],_creature[? "y"],_creature[? "object_index"]);  
     //show_debug_message("entitly creature");
 }
 ds_map_destroy(obj_creatures);
