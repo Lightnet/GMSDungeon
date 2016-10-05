@@ -15,6 +15,9 @@ if(global.level_generate){
     //create the grid FLOOR,WALL,VOID
     grid = ds_grid_create(width, height);
     
+    //create pathfinding grid
+    grid_path = mp_grid_create(0,0,width,height,CELL_WIDTH,CELL_HEIGHT);
+    
     //create object grid instance object
     grid_tileobjects = ds_grid_create(width, height);
     
@@ -45,7 +48,7 @@ if(global.level_generate){
     
     //create the player
     //instance_create((cx*CELL_WIDTH)+(CELL_WIDTH/2),(cy*CELL_HEIGHT)+(CELL_HEIGHT/2), obj_dungeon_core);
-    instance_create((cx*CELL_WIDTH),(cy*CELL_HEIGHT), obj_dungeon_core);
+    //instance_create((cx*CELL_WIDTH),(cy*CELL_HEIGHT), obj_dungeon_core);
     
     //floor
     grid[# cx, cy] = FLOOR; //center 
@@ -64,6 +67,8 @@ if(global.level_generate){
             if(grid[# xx,yy] == FLOOR){
                 var _floor = instance_create(xx*CELL_WIDTH,yy*CELL_WIDTH, obj_floor);
                 grid_tileobjects[# xx, yy] = _floor;
+            }else{
+                //mp_grid_add_cell(grid_path, xx, yy);
             }
             if(grid[# xx,yy] == WALL){
                 var _wall = instance_create(xx*CELL_WIDTH,yy*CELL_WIDTH, obj_wall);

@@ -186,6 +186,7 @@
       <script>scripts\scr_grid_place_meeting.gml</script>
       <script>scripts\scr_level_generate_dungeon.gml</script>
       <script>scripts\scr_get_path_to_player.gml</script>
+      <script>scripts\scr_get_path_to_bot.gml</script>
       <script>scripts\scr_dungeon_object_clear.gml</script>
     </scripts>
   </scripts>
@@ -200,6 +201,7 @@
       <object>objects\obj_lifeform_parent</object>
       <object>objects\obj_player</object>
       <object>objects\obj_enemy_slime</object>
+      <object>objects\obj_slime_path</object>
       <object>objects\obj_enemy_chinlin</object>
       <object>objects\obj_dungeon_core</object>
     </objects>
@@ -241,6 +243,7 @@
       <object>objects\obj_start_menu</object>
       <object>objects\obj_dungeon_menu</object>
       <object>objects\obj_input_name</object>
+      <object>objects\obj_command_units</object>
     </objects>
     <objects name="pickups">
       <object>objects\obj_expr</object>
@@ -321,9 +324,9 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_dungeon_level</room>
-    <room>rooms\rm_ds</room>
     <room>rooms\rm_generate_dungoen</room>
     <room>rooms\rm_simple_generate_level</room>
+    <room>rooms\rm_ds</room>
     <room>rooms\rm_dungeon</room>
     <room>rooms\rm_input_name</room>
     <room>rooms\rm_start_menu</room>
