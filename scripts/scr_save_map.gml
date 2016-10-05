@@ -184,7 +184,7 @@ ds_map_destroy(obj_data);
 var save_string = json_encode(save_data);
 ds_map_destroy(save_data);
 //encode
-//save_string = base64_encode(save_string);
+save_string = base64_encode(save_string);
 
 var file = file_text_open_write(working_directory + "tilemap.txt");
 file_text_write_string(file, save_string);

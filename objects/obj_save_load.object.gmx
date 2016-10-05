@@ -310,8 +310,6 @@ draw_set_alpha(1);
             <string>///set transparent 1 loading screen
 obj_save_load.a = 1;
 obj_save_load.alarm[0] = room_speed;
-
-
 </string>
           </argument>
         </arguments>

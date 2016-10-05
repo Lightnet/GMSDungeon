@@ -30,7 +30,7 @@ if (file == -1) exit;
 var save_string = file_text_read_string(file);
 file_text_close(file);
 //show_debug_message(save_string);
-//save_string = base64_decode(save_string);
+save_string = base64_decode(save_string);
 var save_data = json_decode(save_string);
 
 show_debug_message(save_data[? "name"]);

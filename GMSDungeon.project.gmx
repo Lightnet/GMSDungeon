@@ -292,9 +292,22 @@
     </objects>
     <objects name="buildings">
       <object>objects\obj_door</object>
+      <object>objects\obj_dungeon_door</object>
     </objects>
     <objects name="traps">
       <object>objects\obj_spike</object>
+      <object>objects\obj_trap_door</object>
+      <object>objects\obj_trap_slime</object>
+      <object>objects\obj_trap_arrow</object>
+      <object>objects\obj_trap_boulder</object>
+      <object>objects\obj_trap_teleport</object>
+      <object>objects\obj_mp_drain</object>
+      <object>objects\obj_trap_poision</object>
+      <object>objects\obj_trap_slow</object>
+      <object>objects\obj_trap_sleep</object>
+      <object>objects\obj_trap_ceiling_creature</object>
+      <object>objects\obj_trap_seal</object>
+      <object>objects\obj_trap_warp</object>
       <object>objects\obj_spike_ph</object>
     </objects>
     <object>objects\obj_ds</object>
