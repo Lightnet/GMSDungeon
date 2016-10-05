@@ -30,7 +30,7 @@ phy_fixed_rotation = true;
 hp = 3;
 
 //path
-path = path_add();
+//path = path_add();
 
 target_x = 0;
 target_y = 0;
@@ -64,9 +64,9 @@ creator = "";
           <argument>
             <kind>1</kind>
             <string>/// destory the path
-if(path_exists(path)){
-    path_delete(path);
-}
+//if(path_exists(path)){
+//    path_delete(path);
+//}
 </string>
           </argument>
         </arguments>
@@ -232,16 +232,16 @@ if(hp &lt;= 0){
           <argument>
             <kind>1</kind>
             <string>/// destory the path
-if(path_exists(path)){
-    path_delete(path);
-}
+//if(path_exists(path)){
+//    path_delete(path);
+//}
 </string>
           </argument>
         </arguments>
       </action>
     </event>
   </events>
-  <PhysicsObject>0</PhysicsObject>
+  <PhysicsObject>-1</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
   <PhysicsObjectShape>1</PhysicsObjectShape>
   <PhysicsObjectDensity>0.5</PhysicsObjectDensity>

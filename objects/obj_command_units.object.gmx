@@ -93,13 +93,14 @@ if(mouse_check_button_pressed(mb_right)){
             <string>/// move command?
 if(instance_exists(obj_level_generate_dungeon)){
     show_debug_message(string( ds_list_size(selectunits) ));
-    show_debug_message("x:"+ string(mouse_x) +"y:" +string(mouse_y));
+    //show_debug_message("x:"+ string(mouse_x) +"y:" +string(mouse_y));
     for(var i = 0; i &lt; ds_list_size(selectunits);i++){
         var val = ds_list_find_value(selectunits,i);
         with(val){
             //show_debug_message("unit?" +  string(object_get_name(object_index)));
-            target_x = mouse_x;
-            target_y = mouse_y;
+            target.tx = mouse_x;
+            target.ty = mouse_y;
+            target.alarm[0] = room_speed;
             alarm[2] = room_speed;
         }
     }

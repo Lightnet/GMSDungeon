@@ -101,6 +101,7 @@
       <sprite>sprites\spr_cursor</sprite>
       <sprite>sprites\spr_item</sprite>
       <sprite>sprites\spr_clear_obj</sprite>
+      <sprite>sprites\spr_target</sprite>
     </sprites>
     <sprites name="traps">
       <sprite>sprites\spr_spike</sprite>
@@ -187,6 +188,7 @@
       <script>scripts\scr_level_generate_dungeon.gml</script>
       <script>scripts\scr_get_path_to_player.gml</script>
       <script>scripts\scr_get_path_to_bot.gml</script>
+      <script>scripts\scr_get_path_to_follow.gml</script>
       <script>scripts\scr_dungeon_object_clear.gml</script>
     </scripts>
   </scripts>
@@ -204,6 +206,8 @@
       <object>objects\obj_slime_path</object>
       <object>objects\obj_enemy_chinlin</object>
       <object>objects\obj_dungeon_core</object>
+      <object>objects\obj_none</object>
+      <object>objects\obj_target</object>
     </objects>
     <objects name="tiles">
       <object>objects\obj_detect_ph</object>
