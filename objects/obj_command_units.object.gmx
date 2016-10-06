@@ -100,8 +100,11 @@ if(instance_exists(obj_level_generate_dungeon)){
             //show_debug_message("unit?" +  string(object_get_name(object_index)));
             target.tx = mouse_x;
             target.ty = mouse_y;
-            target.alarm[0] = room_speed;
-            alarm[2] = room_speed;
+            target.bfollow = true;
+            state = scr_bot_follow_state;
+            target.alarm[0] = 1;
+            //target.alarm[0] = room_speed;
+            //alarm[2] = room_speed;
         }
     }
 }

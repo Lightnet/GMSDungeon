@@ -5,6 +5,8 @@ var vspd = lengthdir_y(spd,dir);
 if(hspd != 0){
     image_xscale = sign(hspd);
 }
+//show_debug_message(string(hspd));
+
 scr_get_face(dir);
 movement = MOVE;
 

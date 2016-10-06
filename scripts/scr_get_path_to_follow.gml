@@ -6,9 +6,10 @@
     //show_debug_message("x:"+ string(x) +"y:" +string(y));
     
     if(mp_grid_path(obj_level_generate_dungeon.grid_path, path, x, y, xx, yy, true)){
-        path_start(path, 2, path_action_stop, false);
+        path_start(path, 1, path_action_stop, false);
         //show_debug_message("stop pathing??");
         //exit;
+        bfollow = false;
     }
     //show_debug_message("pathing??");
 //}

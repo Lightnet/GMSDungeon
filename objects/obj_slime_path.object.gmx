@@ -72,45 +72,6 @@ if (scr_chance(0.5)){
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="2">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>//show_debug_message("check alarm move?");
-//if(target_x != 0 and target_y != 0) exit;
-show_debug_message("alarm move?");
-
-var dir = point_direction(x,y,target.x,target.y);
-var hspd = lengthdir_x(spd,dir);
-var vspd = lengthdir_y(spd,dir);
-if(hspd != 0){
-    image_xscale = sign(hspd);
-}
-scr_get_face(dir);
-movement = MOVE;
-
-phy_position_x += hspd
-phy_position_y += vspd;
-alarm[2] = 1;
-
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="2" enumb="1">
       <action>
         <libid>1</libid>
@@ -176,7 +137,7 @@ alarm[2] = 1;
             <kind>1</kind>
             <string>/// run current state
 event_inherited();
-//script_execute(state);
+script_execute(state);
 </string>
           </argument>
         </arguments>

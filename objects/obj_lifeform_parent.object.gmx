@@ -34,6 +34,7 @@ hp = 3;
 
 target_x = 0;
 target_y = 0;
+follow_distance = 4;
 
 //params
 name = "";
