@@ -11,7 +11,7 @@ Add credit to Lightnet.
 Programs:
  * Game Maker Studio : Pro
 
-Information: Trying to keep the game simple for slime dungeon game.
+Information: Trying to keep the game simple for slime 2D dungeon game.
 
 Note:
  * This is just a prototype not a game yet.
