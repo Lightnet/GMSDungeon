@@ -29,6 +29,7 @@
 phy_fixed_rotation = true;
 hp = 3;
 
+target = noone;
 target_x = 0;
 target_y = 0;
 follow_distance = 4;

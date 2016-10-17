@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-1000</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -30,6 +30,15 @@ creatures = ds_list_create();
 
 selectunits = ds_list_create();
 action = "IDLE";
+
+//isboxselect = false;
+ispress_right = false;
+
+selectbox1_x = 0;
+selectbox1_y = 0;
+
+selectbox2_x = 0;
+selectbox2_y = 0;
 </string>
           </argument>
         </arguments>
@@ -68,6 +77,53 @@ if(mouse_check_button_pressed(mb_right)){
     }
 }
 */
+
+if(mouse_check_button_pressed(mb_left)){
+    if(ispress_right == false){
+        selectbox1_x = mouse_x;
+        selectbox1_y = mouse_y;
+        ispress_right = true;
+    }
+}
+
+//check box select
+if(mouse_check_button_released(mb_left)){
+    selectbox2_x = mouse_x;
+    selectbox2_y = mouse_y;
+    
+    if(selectbox1_x == selectbox2_x and selectbox1_y == selectbox2_y){
+        //do nothing
+    }else{
+        //do something
+        var min_x = min(selectbox1_x,selectbox2_x);
+        var min_y = min(selectbox1_y,selectbox2_y);
+        var max_x = max(selectbox1_x,selectbox2_x);
+        var max_y = max(selectbox1_y,selectbox2_y);
+        
+        if(!keyboard_check(vk_shift)){
+            selectunits = ds_list_create();
+        }
+        //show_debug_message("check range?");
+        with(obj_lifeform_parent){
+            if(min_x &lt; x and x &lt; max_x  and min_y &lt; y and y &lt; max_y){
+                //show_debug_message("found?");
+                //loop check if unit need to be added or it current in select list
+                var bfound = false;
+                for(var i = 0; i &lt; ds_list_size(obj_command_units.selectunits);i++){
+                    var val = ds_list_find_value(obj_command_units.selectunits,i);
+                    if(val == id){
+                        show_debug_message("found!");
+                        bfound = true;
+                    }
+                }
+                if(!bfound){//if not found add to the list
+                    ds_list_add(obj_command_units.selectunits,id);
+                }
+            }
+        }
+    }
+    ispress_right = false;
+}
 </string>
           </argument>
         </arguments>
@@ -90,7 +146,9 @@ if(mouse_check_button_pressed(mb_right)){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// move command?
+            <string>///  move command or attack?
+
+// move command?
 if(instance_exists(obj_level_generate_dungeon)){
     //show_debug_message(string( ds_list_size(selectunits) ));
     //show_debug_message("x:"+ string(mouse_x) +"y:" +string(mouse_y));
@@ -135,6 +193,43 @@ if(instance_exists(obj_level_generate_dungeon)){
 draw_text(view_wport[0]-128,16,"COMMANDS: ");
 draw_text(view_wport[0]-128,32,"Select Unit: " +  string(ds_list_size(selectunits)));
 draw_text(view_wport[0]-128,48,"Action: " +  action);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//draw select box
+if(ispress_right){
+    selectbox2_x = mouse_x;
+    selectbox2_y = mouse_y;
+    
+    var min_x = min(selectbox1_x,selectbox2_x);
+    var min_y = min(selectbox1_y,selectbox2_y);
+    var max_x = max(selectbox1_x,selectbox2_x);
+    var max_y = max(selectbox1_y,selectbox2_y);
+    
+    //show_debug_message(min_x);
+    draw_set_colour(c_white);
+    draw_rectangle(min_x,min_y,max_x,max_y,true);
+    
+}
 </string>
           </argument>
         </arguments>
