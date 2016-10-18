@@ -62,21 +62,8 @@ selectbox2_y = 0;
           <argument>
             <kind>1</kind>
             <string>/// key?
-/*
-if(mouse_check_button_pressed(mb_right)){
-    show_debug_message("move?");
-    for(var i = 0; 0 &lt; ds_list_size(selectunits);i++){
-        var val = ds_list_find_value(selectunits, i);
-        show_debug_message("units?");
-        with(val){
-            show_debug_message("assign units?");
-            target_x = mouse_x;
-            target_y = mouse_y;
-            alarm[2] = room_speed;
-        }
-    }
-}
-*/
+
+if(global._display_player != CONTROL_DUNGEON){exit;}
 
 if(mouse_check_button_pressed(mb_left)){
     if(ispress_right == false){
@@ -147,15 +134,26 @@ if(mouse_check_button_released(mb_left)){
           <argument>
             <kind>1</kind>
             <string>///  move command or attack?
-
+//make sure it dungeon control
+if(global._display_player != CONTROL_DUNGEON){exit;}
 // move command?
 if(instance_exists(obj_level_generate_dungeon)){
     //show_debug_message(string( ds_list_size(selectunits) ));
     //show_debug_message("x:"+ string(mouse_x) +"y:" +string(mouse_y));
+    
+    if(selectbox1_x != selectbox2_x and selectbox1_y != selectbox2_y){
+        exit;
+    }
+    
+    
     for(var i = 0; i &lt; ds_list_size(selectunits);i++){
         var val = ds_list_find_value(selectunits,i);
         with(val){
             //show_debug_message("unit?" +  string(object_get_name(object_index)));
+            //set position from object
+            target.x = x;
+            target.y = y;
+            //set target for path            
             target.tx = mouse_x;
             target.ty = mouse_y;
             target.bfollow = true;

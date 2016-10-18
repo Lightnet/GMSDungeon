@@ -35,6 +35,11 @@ if(instance_exists(obj_player)){
     x = obj_player.x;
     y = obj_player.y;    
 }
+ispress_right = false;
+selectbox1_x = 0;
+selectbox1_y = 0;
+selectbox2_x = 0;
+selectbox2_y = 0;
 
 view_wview[0] = 320 * zoom;
 view_hview[0] = 240 * zoom;
@@ -74,6 +79,30 @@ if(bfollowplayer){
         //add lag move here
         x += (obj_player.x - x) * 0.1;
         y += (obj_player.y - y) * 0.1;
+    }
+}
+
+//make sure the right click hold move doesn't move if the position is same else move pan
+if(mouse_check_button_pressed(mb_right)){
+    if(ispress_right == false){
+        selectbox1_x = mouse_x;
+        selectbox1_y = mouse_y;
+        ispress_right = true;    
+    }
+}
+
+if(mouse_check_button_released(mb_right)){
+    ispress_right = false;  
+}
+
+if(ispress_right){
+    selectbox2_x = mouse_x;
+    selectbox2_y = mouse_y;
+    if(selectbox1_x == selectbox2_x and selectbox1_y == selectbox2_y){
+        //show_debug_message("do nothing");
+        exit;
+    }else{
+        //show_debug_message("move?");    
     }
 }
 
