@@ -29,10 +29,10 @@
 tx = 0;
 ty = 0;
 
-points = path_get_number(path);
-point = 0;//path to the first node first... firstly.
-mag = 10;
-done = 0;
+//points = path_get_number(path);
+//point = 0;//path to the first node first... firstly.
+//mag = 10;
+//done = 0;
 //bfollow = false;
 </string>
           </argument>
