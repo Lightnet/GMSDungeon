@@ -36,8 +36,10 @@ alarm[0] =  room_speed * irandom_range(2,5);
 sight = 64;
 xaxis = 0;
 yaxis = 0;
-
 target = instance_create(x,y,obj_target);
+
+point = 0;
+done = 0;
 </string>
           </argument>
         </arguments>

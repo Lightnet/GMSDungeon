@@ -1,4 +1,6 @@
- ///scr_level_generate_dungeon()
+///scr_level_generate_dungeon()
+
+bdraw_pathmap = false; 
 
 /// initialize dungeon create
 global.level_generate = true;
@@ -68,7 +70,8 @@ if(global.level_generate){
                 var _floor = instance_create(xx*CELL_WIDTH,yy*CELL_WIDTH, obj_floor);
                 grid_tileobjects[# xx, yy] = _floor;
             }else{
-                //mp_grid_add_cell(grid_path, xx, yy);
+                //wall or no go path
+                mp_grid_add_cell(grid_path, xx, yy);
             }
             if(grid[# xx,yy] == WALL){
                 var _wall = instance_create(xx*CELL_WIDTH,yy*CELL_WIDTH, obj_wall);

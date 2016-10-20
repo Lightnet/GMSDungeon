@@ -223,9 +223,13 @@ if(isbuild){
                     if(selectobject.objtype == WALL || selectobject.objtype == FLOOR){
                         //check and assign type of dungeon floor or wall                
                         if(selectobject.objtype == WALL){
+                            //block path
+                            mp_grid_add_cell(obj_level_generate_dungeon.grid_path,gx,gy);
                             obj_level_generate_dungeon.grid[# gx,gy] = WALL;
                         }
-                        if(selectobject.objtype == WALL){
+                        if(selectobject.objtype == FLOOR){
+                            //clear path
+                            mp_grid_clear_cell(obj_level_generate_dungeon.grid_path,gx,gy);
                             obj_level_generate_dungeon.grid[# gx,gy] = FLOOR;
                         }
                         //check if object exist on the grid

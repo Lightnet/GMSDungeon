@@ -28,7 +28,12 @@
             <string>path = path_add();
 tx = 0;
 ty = 0;
-bfollow = false;
+
+points = path_get_number(path);
+point = 0;//path to the first node first... firstly.
+mag = 10;
+done = 0;
+//bfollow = false;
 </string>
           </argument>
         </arguments>
@@ -52,7 +57,7 @@ bfollow = false;
           <argument>
             <kind>1</kind>
             <string>scr_get_path_to_follow();
-alarm[0] = room_speed;
+//alarm[0] = room_speed;
 </string>
           </argument>
         </arguments>
@@ -77,6 +82,35 @@ alarm[0] = room_speed;
             <kind>1</kind>
             <string>// follow path
 //scr_get_path_to_follow();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//draw path
+//show_debug_message(path_get_length(path));
+//if(path_get_length(path) &gt; 0){
+//    draw_set_alpha(0.5);
+//    mp_grid_draw(path);
+//    draw_set_alpha(1);
+//}
 </string>
           </argument>
         </arguments>

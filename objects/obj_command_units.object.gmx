@@ -31,14 +31,19 @@ creatures = ds_list_create();
 selectunits = ds_list_create();
 action = "IDLE";
 
-//isboxselect = false;
 ispress_right = false;
+ispress_left = false;
 
 selectbox1_x = 0;
 selectbox1_y = 0;
-
 selectbox2_x = 0;
 selectbox2_y = 0;
+
+right_click1_x = 0;
+right_click1_y = 0;
+
+right_click2_x = 0;
+right_click2_y = 0;
 </string>
           </argument>
         </arguments>
@@ -66,12 +71,28 @@ selectbox2_y = 0;
 if(global._display_player != CONTROL_DUNGEON){exit;}
 
 if(mouse_check_button_pressed(mb_left)){
-    if(ispress_right == false){
+    if(ispress_left == false){
         selectbox1_x = mouse_x;
         selectbox1_y = mouse_y;
+        ispress_left = true;
+    }
+}
+if(mouse_check_button_pressed(mb_right)){
+    if(ispress_right == false){
+        right_click1_x = mouse_x;
+        right_click1_y = mouse_y;
         ispress_right = true;
     }
 }
+
+if(ispress_right){
+    right_click2_x = mouse_x;
+    right_click2_y = mouse_y;
+}
+//this handle on other event object
+//if(mouse_check_button_released(mb_left)){
+//    ispress_right = false;
+//}
 
 //check box select
 if(mouse_check_button_released(mb_left)){
@@ -109,7 +130,7 @@ if(mouse_check_button_released(mb_left)){
             }
         }
     }
-    ispress_right = false;
+    ispress_left = false;
 }
 </string>
           </argument>
@@ -136,16 +157,13 @@ if(mouse_check_button_released(mb_left)){
             <string>///  move command or attack?
 //make sure it dungeon control
 if(global._display_player != CONTROL_DUNGEON){exit;}
+//show_debug_message("move?");
 // move command?
 if(instance_exists(obj_level_generate_dungeon)){
     //show_debug_message(string( ds_list_size(selectunits) ));
     //show_debug_message("x:"+ string(mouse_x) +"y:" +string(mouse_y));
-    
-    if(selectbox1_x != selectbox2_x and selectbox1_y != selectbox2_y){
-        exit;
-    }
-    
-    
+    if(right_click1_x != right_click2_x and right_click1_y != right_click2_y){exit;}
+    //show_debug_message("move?");
     for(var i = 0; i &lt; ds_list_size(selectunits);i++){
         var val = ds_list_find_value(selectunits,i);
         with(val){
@@ -156,7 +174,9 @@ if(instance_exists(obj_level_generate_dungeon)){
             //set target for path            
             target.tx = mouse_x;
             target.ty = mouse_y;
-            target.bfollow = true;
+            point = 0;
+            done = 0;
+            //target.bfollow = true;
             state = scr_bot_follow_state;
             target.alarm[0] = 1;
             //target.alarm[0] = room_speed;
@@ -164,6 +184,7 @@ if(instance_exists(obj_level_generate_dungeon)){
         }
     }
 }
+ispress_right = false;
 </string>
           </argument>
         </arguments>
@@ -214,7 +235,7 @@ draw_text(view_wport[0]-128,48,"Action: " +  action);
           <argument>
             <kind>1</kind>
             <string>//draw select box
-if(ispress_right){
+if(ispress_left){
     selectbox2_x = mouse_x;
     selectbox2_y = mouse_y;
     
