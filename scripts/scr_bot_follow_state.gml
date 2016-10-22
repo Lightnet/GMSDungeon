@@ -1,16 +1,15 @@
 ///scr_enemy_chase_state
 
-if(instance_exists(target)){
+//if(instance_exists(target)){
     //path_get_number(target.path);
-    
-    if(!done) {
+    if(!path_done) {
         //show_debug_message(path_get_number(target.path));
-        dir = point_direction(x,y,path_get_point_x(target.path,point),path_get_point_y(target.path,point));
+        dir = point_direction(x,y,path_get_point_x(path,point),path_get_point_y(path,point));
         /* Change this if necessary */
-        if(point_distance(x,y,path_get_point_x(target.path,point),path_get_point_y(target.path,point)) < 10 ) {
+        if(point_distance(x,y,path_get_point_x(path,point),path_get_point_y(path,point)) < 10 ) {
             point++;
-            if(point >= path_get_number(target.path)) {
-                done = true;
+            if(point >= path_get_number(path)) {
+                path_done = true;
                 //show_debug_message("done??");
                 state = scr_bot_idle_state;
             }
@@ -20,7 +19,7 @@ if(instance_exists(target)){
             scr_move_axis();
         }
     }
-}
+//}
 
 
 /*

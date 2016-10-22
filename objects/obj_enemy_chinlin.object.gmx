@@ -77,6 +77,7 @@ sprite[LEFT, IDLE] = spr_chinlin_stand_right;
           <argument>
             <kind>1</kind>
             <string>/// create the experience
+event_inherited();
 instance_create(x,y,obj_expr);
 audio_play_sound(snd_enemy_die,5,false);
 

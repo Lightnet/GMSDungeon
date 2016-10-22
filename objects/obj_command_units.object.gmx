@@ -115,17 +115,19 @@ if(mouse_check_button_released(mb_left)){
         with(obj_lifeform_parent){
             if(min_x &lt; x and x &lt; max_x  and min_y &lt; y and y &lt; max_y){
                 //show_debug_message("found?");
-                //loop check if unit need to be added or it current in select list
-                var bfound = false;
-                for(var i = 0; i &lt; ds_list_size(obj_command_units.selectunits);i++){
-                    var val = ds_list_find_value(obj_command_units.selectunits,i);
-                    if(val == id){
-                        show_debug_message("found!");
-                        bfound = true;
+                if(bsingle_select == false){
+                    //loop check if unit need to be added or it current in select list
+                    var bfound = false;
+                    for(var i = 0; i &lt; ds_list_size(obj_command_units.selectunits);i++){
+                        var val = ds_list_find_value(obj_command_units.selectunits,i);
+                        if(val == id){
+                            show_debug_message("found!");
+                            bfound = true;
+                        }
                     }
-                }
-                if(!bfound){//if not found add to the list
-                    ds_list_add(obj_command_units.selectunits,id);
+                    if(!bfound){//if not found add to the list
+                        ds_list_add(obj_command_units.selectunits,id);
+                    }
                 }
             }
         }
@@ -167,20 +169,9 @@ if(instance_exists(obj_level_generate_dungeon)){
     for(var i = 0; i &lt; ds_list_size(selectunits);i++){
         var val = ds_list_find_value(selectunits,i);
         with(val){
-            //show_debug_message("unit?" +  string(object_get_name(object_index)));
-            //set position from object
-            target.x = x;
-            target.y = y;
-            //set target for path            
-            target.tx = mouse_x;
-            target.ty = mouse_y;
-            point = 0;
-            done = 0;
-            //target.bfollow = true;
-            state = scr_bot_follow_state;
-            target.alarm[0] = 1;
-            //target.alarm[0] = room_speed;
-            //alarm[2] = room_speed;
+            //if(bsingle_select == false){
+                scr_set_path_follow(mouse_x,mouse_y);
+            //}
         }
     }
 }

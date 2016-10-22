@@ -34,9 +34,15 @@ target_x = 0;
 target_y = 0;
 follow_distance = 4;
 
+//path
+path = path_add();
+point = 0;
+path_done = 0;
+
+
 //params
 name = "";
-bselect = false;
+bsingle_select = false;
 teamid = -1;
 owner = "";
 creator = "";
@@ -63,9 +69,9 @@ creator = "";
           <argument>
             <kind>1</kind>
             <string>/// destory the path
-//if(path_exists(path)){
-//    path_delete(path);
-//}
+if(path_exists(path)){
+    path_delete(path);
+}
 </string>
           </argument>
         </arguments>

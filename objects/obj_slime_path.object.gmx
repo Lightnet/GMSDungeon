@@ -36,10 +36,10 @@ alarm[0] =  room_speed * irandom_range(2,5);
 sight = 64;
 xaxis = 0;
 yaxis = 0;
-target = instance_create(x,y,obj_target);
+//target = instance_create(x,y,obj_target);
 
-point = 0;
-done = 0;
+//point = 0;
+//done = 0;
 </string>
           </argument>
         </arguments>
@@ -63,6 +63,7 @@ done = 0;
           <argument>
             <kind>1</kind>
             <string>/// create the experience
+event_inherited();
 instance_create(x,y,obj_expr);
 audio_play_sound(snd_enemy_die,5,false);
 //drop health pack

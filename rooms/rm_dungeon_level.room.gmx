@@ -62,7 +62,6 @@
     <instance objName="obj_save_load" x="32" y="192" name="inst_BA186CD8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_command_units" x="64" y="96" name="inst_2AAC6D1F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_slime_path" x="752" y="720" name="inst_3BDA9E5A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_slime_path" x="704" y="704" name="inst_CED6ECBA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>-1</PhysicsWorld>

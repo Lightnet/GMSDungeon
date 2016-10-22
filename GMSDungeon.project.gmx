@@ -143,6 +143,7 @@
         <script>scripts\scr_bot_chose_next_state.gml</script>
         <script>scripts\scr_check_for_player.gml</script>
         <script>scripts\scr_move_axis.gml</script>
+        <script>scripts\scr_set_path_follow.gml</script>
       </scripts>
     </scripts>
     <scripts name="player_state">
