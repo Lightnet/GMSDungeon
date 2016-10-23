@@ -48,9 +48,9 @@ if(global.level_generate){
     var cx = width div 2;
     var cy = height div 2;
     
-    //create the player
+    //create the dungeon core
     //instance_create((cx*CELL_WIDTH)+(CELL_WIDTH/2),(cy*CELL_HEIGHT)+(CELL_HEIGHT/2), obj_dungeon_core);
-    instance_create((cx*CELL_WIDTH),(cy*CELL_HEIGHT), obj_dungeon_core);
+    //instance_create((cx*CELL_WIDTH),(cy*CELL_HEIGHT), obj_dungeon_core);
     
     //floor
     grid[# cx, cy] = FLOOR; //center 

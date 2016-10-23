@@ -28,7 +28,17 @@
             <string>///initialize the lifeform
 phy_fixed_rotation = true;
 hp = 3;
+maxhp = 3;
 
+//health bar
+bdisplay_healthbar = true;
+hb_offset_x = 0;
+hb_offset_y = 0;
+hb_width = 32;
+hb_height = 4;
+
+
+//target
 target = noone;
 target_x = 0;
 target_y = 0;
@@ -240,6 +250,44 @@ if(hp &lt;= 0){
 //if(path_exists(path)){
 //    path_delete(path);
 //}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// draw health bar
+if(bdisplay_healthbar){
+    draw_set_colour(c_gray);
+    draw_rectangle(x+hb_offset_x,y+hb_offset_y,x+hb_width+hb_offset_x,y+  hb_height + hb_offset_y,false);
+    draw_set_colour(c_green);
+    
+    var bar_percent = hp / maxhp ;
+    
+    //show_debug_message(bar_percent);
+    var percent_width = hb_width * clamp(bar_percent,0,1);
+    //show_debug_message(max(bar_percent,1));    
+    //show_debug_message(percent_width);
+    draw_rectangle(x+hb_offset_x,y+hb_offset_y,x + percent_width + hb_offset_x,y +  hb_height + hb_offset_y,false);
+}
+
+draw_self();
 </string>
           </argument>
         </arguments>

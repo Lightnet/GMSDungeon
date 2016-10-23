@@ -30,6 +30,8 @@
 if(instance_number(obj_player) &gt; 1) instance_destroy();
 event_inherited();
 
+bdisplay_healthbar = false;
+
 hp = 3;
 spd = 2;
 hspd = 0;
@@ -39,6 +41,12 @@ yaxis = 0;
 len = 0;
 dir = 0;
 image_speed = 0;
+
+hb_offset_x = -16;
+hb_offset_y = -16;
+hb_width = 32;
+hb_height = 4;
+
 //scr_get_input();//set up instance var move keys
 state = scr_move_state;
 face = RIGHT;
@@ -288,6 +296,8 @@ persistent = true;
           <argument>
             <kind>1</kind>
             <string>/// draw shadow
+event_inherited();
+
 draw_sprite(spr_player_shadow,image_index, x, y);
 draw_self();
 </string>

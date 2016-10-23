@@ -35,6 +35,11 @@ alarm[0] =  room_speed * irandom_range(2,5);
 sight = 64;
 xaxis = 0;
 yaxis = 0;
+
+hb_offset_x = -16;
+hb_offset_y = -16;
+hb_width = 32;
+hb_height = 4;
 </string>
           </argument>
         </arguments>

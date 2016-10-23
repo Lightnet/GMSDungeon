@@ -28,6 +28,12 @@
             <string>/// initialize the player stats
 hp = 5;
 maxhp = hp;
+bdisplay_healthbar = true;
+hb_offset_x = -16;
+hb_offset_y = -16;
+hb_width = 32;
+hb_height = 4;
+
 stamina = 10;
 maxstamina = stamina;
 expr = 0;
@@ -208,6 +214,47 @@ if(global._display_player){
         draw_text(4,16*6+4, "LEVEL: " + string(level) );
     }
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(bdisplay_healthbar){
+    if(instance_exists(obj_player)){
+        var xx = obj_player.x;
+        var yy = obj_player.y;
+
+        draw_set_colour(c_gray);
+        draw_rectangle(xx+hb_offset_x,yy+hb_offset_y,xx+hb_width+hb_offset_x,yy+  hb_height + hb_offset_y,false);
+        draw_set_colour(c_green);
+        
+        var bar_percent = hp / maxhp ;
+        
+        //show_debug_message(bar_percent);
+        var percent_width = hb_width * clamp(bar_percent,0,1);
+        //show_debug_message(max(bar_percent,1));    
+        //show_debug_message(percent_width);
+        draw_rectangle(xx+hb_offset_x,yy+hb_offset_y,xx + percent_width + hb_offset_x,yy +  hb_height + hb_offset_y,false);
+    }
+}
+//draw_self();
 </string>
           </argument>
         </arguments>

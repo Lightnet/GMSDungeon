@@ -332,12 +332,12 @@
     <object>objects\obj_spawner_text</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_dungeon_level</room>
-    <room>rooms\rm_textbox</room>
-    <room>rooms\rm_generate_dungoen</room>
-    <room>rooms\rm_simple_generate_level</room>
-    <room>rooms\rm_ds</room>
     <room>rooms\rm_dungeon</room>
+    <room>rooms\rm_dungeon_level</room>
+    <room>rooms\rm_simple_generate_level</room>
+    <room>rooms\rm_generate_dungoen</room>
+    <room>rooms\rm_textbox</room>
+    <room>rooms\rm_ds</room>
     <room>rooms\rm_input_name</room>
     <room>rooms\rm_start_menu</room>
     <room>rooms\rm_dimension_home</room>

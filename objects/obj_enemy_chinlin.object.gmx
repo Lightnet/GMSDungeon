@@ -28,6 +28,13 @@
             <string>/// initialize the slime
 //phy_fixed_rotation = true;
 event_inherited();
+
+
+hb_offset_x = -16;
+hb_offset_y = -16;
+hb_width = 32;
+hb_height = 4;
+
 image_speed = 0.2;
 spd = 1.5;
 state = scr_bot_idle_state;
