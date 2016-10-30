@@ -209,7 +209,6 @@
       <object>objects\obj_slime_path</object>
       <object>objects\obj_enemy_chinlin</object>
       <object>objects\obj_dungeon_core</object>
-      <object>objects\obj_none</object>
       <object>objects\obj_target</object>
     </objects>
     <objects name="tiles">
