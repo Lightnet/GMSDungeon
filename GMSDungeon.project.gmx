@@ -3,7 +3,7 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="1" name="datafiles">
+  <datafiles number="2" name="datafiles">
     <datafile>
       <name>index.html</name>
       <exists>-1</exists>
@@ -21,6 +21,25 @@
       </ConfigOptions>
       <filename>index.html</filename>
     </datafile>
+    <datafiles number="2" name="Dialog">
+      <datafile>
+        <name>0.txt</name>
+        <exists>-1</exists>
+        <size>2646</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>0.txt</filename>
+      </datafile>
+    </datafiles>
   </datafiles>
   <NewExtensions>
     <extension index="0">extensions\gmCallback</extension>
@@ -102,6 +121,9 @@
       <sprite>sprites\spr_item</sprite>
       <sprite>sprites\spr_clear_obj</sprite>
       <sprite>sprites\spr_target</sprite>
+      <sprite>sprites\sprNPCBobFace</sprite>
+      <sprite>sprites\sprNPCUnkown</sprite>
+      <sprite>sprites\sprNPCFred</sprite>
     </sprites>
     <sprites name="traps">
       <sprite>sprites\spr_spike</sprite>
@@ -194,10 +216,22 @@
       <script>scripts\scr_get_path_to_follow.gml</script>
       <script>scripts\scr_dungeon_object_clear.gml</script>
     </scripts>
+    <scripts name="dialogue">
+      <script>scripts\scr_npcDialogCommands.gml</script>
+      <script>scripts\scrNPCDialogContinue.gml</script>
+      <script>scripts\load_npcChat.gml</script>
+      <script>scripts\scr_GUIhover.gml</script>
+      <script>scripts\draw_text_shadow_color.gml</script>
+      <script>scripts\scrNPCCDialogOption.gml</script>
+    </scripts>
+    <scripts name="quests">
+      <script>scripts\scr_changeQuest.gml</script>
+    </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_text</font>
     <font>fonts\fnt_main</font>
+    <font>fonts\fnt_chat</font>
   </fonts>
   <objects name="objects">
     <objects name="creatures">
@@ -210,6 +244,9 @@
       <object>objects\obj_enemy_chinlin</object>
       <object>objects\obj_dungeon_core</object>
       <object>objects\obj_target</object>
+      <object>objects\objGenerator</object>
+      <object>objects\parNPC</object>
+      <object>objects\objNPCBob</object>
     </objects>
     <objects name="tiles">
       <object>objects\obj_detect_ph</object>
@@ -329,6 +366,7 @@
     </objects>
     <object>objects\obj_text</object>
     <object>objects\obj_spawner_text</object>
+    <object>objects\objControl</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_dungeon</room>
